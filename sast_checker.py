@@ -420,8 +420,9 @@ def categorize_extra(extra, refs, tolerance, src_prefixes=("src/",)):
         # heuristic: real app source lives under the vulnapp package in src/.
         # Exclude the helper/generator scripts and reference file explicitly.
         base = u.rsplit("/", 1)[-1]
-        if base in ("sast_checker.py", "gen_reference.py", "gen_docs.py",
-                    "reference.sarif", "setup.py", "conftest.py"):
+        if base in ("sast_checker.py", "gen_reference.py", "build_docs.py",
+                    "cwe_kb.py", "gen_docs.py", "reference.sarif",
+                    "setup.py", "conftest.py"):
             return False
         return u.endswith(".py") and ("/vulnapp/" in u or "vulnapp/" in raw
                                       or "src/" in u or "src/" in raw)

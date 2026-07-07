@@ -6,10 +6,11 @@ SAST (Static Application Security Testing) tools.**
 
 ## Purpose
 
-A small Python project that intentionally implements **60** of the most common
-software vulnerabilities (SQL injection, command injection, path traversal, XSS,
-SSTI, weak crypto, SSRF, insecure deserialization, hardcoded secrets, XXE, etc.),
-spanning **45 distinct CWEs**.
+A small Python project that intentionally implements **100** of the most common
+and dangerous software vulnerabilities (SQL injection, command/code injection,
+path traversal, XSS, SSTI, weak crypto, SSRF, insecure deserialization,
+hardcoded secrets, XXE, IDOR, CSRF, race conditions, etc.), spanning
+**74 distinct CWEs**.
 
 Intended workflow:
 
@@ -29,7 +30,12 @@ Intended workflow:
 - `gen_reference.py` — regenerates `reference.sarif` from the in-source markers
   (guarantees line numbers never drift from the code).
 - `gen_docs.py` — regenerates `VULNERABILITIES.md` from `reference.sarif`.
-- `VULNERABILITIES.md` — human-readable catalog of every planted vulnerability.
+- `VULNERABILITIES.md` — human-readable catalog of every planted vulnerability
+  (auto-generated from `reference.sarif`).
+- `docs/` — typeset reference & exploitation guide. `docs/vulnerabilities.pdf`
+  is the compiled 35-page guide (one section per vuln: location, planted sink,
+  what it is, exploitation variants, remediation). See `docs/README.md` to
+  rebuild it. `docs/gen_docs.py` also refreshes `VULNERABILITIES.md`.
 - `requirements.txt` — libraries referenced by the sample code (not required to
   run the scan/compare workflow).
 
@@ -37,12 +43,14 @@ Intended workflow:
 
 | Module | Vuln range | Theme |
 | ------ | ---------- | ----- |
-| `src/vulnapp/injection_vulns.py`    | VULN-01..11 | SQLi, command/code/LDAP/NoSQL injection, ReDoS |
-| `src/vulnapp/web_vulns.py`          | VULN-12..19 | XSS, SSTI, open redirect, CORS, cookies, clickjacking |
-| `src/vulnapp/file_network_vulns.py` | VULN-20..26 | Path traversal, SSRF, tar slip, temp files, pickle |
-| `src/vulnapp/crypto_secret_vulns.py`| VULN-27..37 | Hardcoded secrets, weak hashes/ciphers, bad RNG |
-| `src/vulnapp/auth_api_vulns.py`     | VULN-38..49 | AuthN/AuthZ, IDOR, JWT, rate limiting, error exposure |
-| `src/vulnapp/data_config_vulns.py`  | VULN-50..60 | XXE, unsafe YAML, reflection, logging, TLS, upload |
+| `src/vulnapp/injection_vulns.py`          | VULN-01..11  | SQLi, command/code/LDAP/NoSQL injection, ReDoS |
+| `src/vulnapp/web_vulns.py`                | VULN-12..19  | XSS, SSTI, open redirect, CORS, cookies, clickjacking |
+| `src/vulnapp/file_network_vulns.py`       | VULN-20..26  | Path traversal, SSRF, tar slip, temp files, pickle |
+| `src/vulnapp/crypto_secret_vulns.py`      | VULN-27..37  | Hardcoded secrets, weak hashes/ciphers, bad RNG |
+| `src/vulnapp/auth_api_vulns.py`           | VULN-38..49  | AuthN/AuthZ, IDOR, JWT, rate limiting, error exposure |
+| `src/vulnapp/data_config_vulns.py`        | VULN-50..60  | XXE, unsafe YAML, reflection, logging, TLS, upload |
+| `src/vulnapp/advanced_injection_vulns.py` | VULN-61..80  | 2nd-order SQLi, arg/XPath/EL injection, CRLF, CSRF, host header, ReDoS |
+| `src/vulnapp/concurrency_misc_vulns.py`   | VULN-81..100 | TOCTOU, races, resource leaks, int overflow, DoS, numeric/logic bugs |
 
 ## Vulnerability markers
 
@@ -59,7 +67,7 @@ code exactly — edit the source, rerun the generator, done.
 
 ```bash
 python3 gen_reference.py --src src --out reference.sarif
-python3 gen_docs.py --reference reference.sarif --out VULNERABILITIES.md
+python3 docs/build_docs.py          # rebuild docs/vulnerabilities.tex + VULNERABILITIES.md
 ```
 
 ## Building the submission archive
@@ -137,5 +145,5 @@ Sanity check that reference matches itself perfectly:
 
 ```bash
 python3 sast_checker.py -r reference.sarif -a reference.sarif
-# => matched=60/60 recall=100.00% precision=100.00% f1=100.00%
+# => matched=100/100 recall=100.00% precision=100.00% f1=100.00%
 ```

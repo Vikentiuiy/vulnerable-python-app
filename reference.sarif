@@ -998,6 +998,644 @@
                 "security-severity": "8.0"
               },
               "helpUri": "https://cwe.mitre.org/data/definitions/434.html"
+            },
+            {
+              "id": "python/argument-injection",
+              "name": "ArgumentInjection",
+              "shortDescription": {
+                "text": "CWE-88: Argument Injection"
+              },
+              "fullDescription": {
+                "text": "Planted Argument Injection vulnerability (CWE-88)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-88"
+                ],
+                "cwe": "CWE-88",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/88.html"
+            },
+            {
+              "id": "python/expression-language-injection",
+              "name": "ELInjection",
+              "shortDescription": {
+                "text": "CWE-917: Expression Language Injection"
+              },
+              "fullDescription": {
+                "text": "Planted Expression Language Injection vulnerability (CWE-917)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-917"
+                ],
+                "cwe": "CWE-917",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/917.html"
+            },
+            {
+              "id": "python/xpath-injection",
+              "name": "XPathInjection",
+              "shortDescription": {
+                "text": "CWE-643: XPath Injection"
+              },
+              "fullDescription": {
+                "text": "Planted XPath Injection vulnerability (CWE-643)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-643"
+                ],
+                "cwe": "CWE-643",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/643.html"
+            },
+            {
+              "id": "python/crlf-injection",
+              "name": "CRLFInjection",
+              "shortDescription": {
+                "text": "CWE-93: CRLF / Header Injection"
+              },
+              "fullDescription": {
+                "text": "Planted CRLF / Header Injection vulnerability (CWE-93)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-93"
+                ],
+                "cwe": "CWE-93",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/93.html"
+            },
+            {
+              "id": "python/improper-encoding-or-escaping-of-output",
+              "name": "ImproperOutputEncoding",
+              "shortDescription": {
+                "text": "CWE-116: Improper Encoding or Escaping of Output"
+              },
+              "fullDescription": {
+                "text": "Planted Improper Encoding or Escaping of Output vulnerability (CWE-116)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-116"
+                ],
+                "cwe": "CWE-116",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/116.html"
+            },
+            {
+              "id": "python/uncontrolled-format-string",
+              "name": "FormatString",
+              "shortDescription": {
+                "text": "CWE-134: Uncontrolled Format String"
+              },
+              "fullDescription": {
+                "text": "Planted Uncontrolled Format String vulnerability (CWE-134)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-134"
+                ],
+                "cwe": "CWE-134",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/134.html"
+            },
+            {
+              "id": "python/mass-assignment",
+              "name": "MassAssignment",
+              "shortDescription": {
+                "text": "CWE-915: Mass Assignment"
+              },
+              "fullDescription": {
+                "text": "Planted Mass Assignment vulnerability (CWE-915)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-915"
+                ],
+                "cwe": "CWE-915",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/915.html"
+            },
+            {
+              "id": "python/xml-entity-expansion",
+              "name": "XMLEntityExpansion",
+              "shortDescription": {
+                "text": "CWE-776: XML Entity Expansion (Billion Laughs)"
+              },
+              "fullDescription": {
+                "text": "Planted XML Entity Expansion (Billion Laughs) vulnerability (CWE-776)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-776"
+                ],
+                "cwe": "CWE-776",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/776.html"
+            },
+            {
+              "id": "python/cookie-without-samesite",
+              "name": "CookieNoSameSite",
+              "shortDescription": {
+                "text": "CWE-1275: Sensitive Cookie Without SameSite"
+              },
+              "fullDescription": {
+                "text": "Planted Sensitive Cookie Without SameSite vulnerability (CWE-1275)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-1275"
+                ],
+                "cwe": "CWE-1275",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/1275.html"
+            },
+            {
+              "id": "python/cross-site-request-forgery",
+              "name": "CSRF",
+              "shortDescription": {
+                "text": "CWE-352: Cross-Site Request Forgery"
+              },
+              "fullDescription": {
+                "text": "Planted Cross-Site Request Forgery vulnerability (CWE-352)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-352"
+                ],
+                "cwe": "CWE-352",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/352.html"
+            },
+            {
+              "id": "python/host-header-injection",
+              "name": "HostHeaderInjection",
+              "shortDescription": {
+                "text": "CWE-644: Improper Neutralization of HTTP Headers"
+              },
+              "fullDescription": {
+                "text": "Planted Improper Neutralization of HTTP Headers vulnerability (CWE-644)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-644"
+                ],
+                "cwe": "CWE-644",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/644.html"
+            },
+            {
+              "id": "python/toctou-race-condition",
+              "name": "TOCTOU",
+              "shortDescription": {
+                "text": "CWE-367: TOCTOU Race Condition"
+              },
+              "fullDescription": {
+                "text": "Planted TOCTOU Race Condition vulnerability (CWE-367)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-367"
+                ],
+                "cwe": "CWE-367",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/367.html"
+            },
+            {
+              "id": "python/race-condition",
+              "name": "RaceCondition",
+              "shortDescription": {
+                "text": "CWE-362: Concurrent Execution Race Condition"
+              },
+              "fullDescription": {
+                "text": "Planted Concurrent Execution Race Condition vulnerability (CWE-362)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-362"
+                ],
+                "cwe": "CWE-362",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/362.html"
+            },
+            {
+              "id": "python/missing-release-of-resource",
+              "name": "ResourceLeak",
+              "shortDescription": {
+                "text": "CWE-772: Missing Release of Resource"
+              },
+              "fullDescription": {
+                "text": "Planted Missing Release of Resource vulnerability (CWE-772)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-772"
+                ],
+                "cwe": "CWE-772",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/772.html"
+            },
+            {
+              "id": "python/uncontrolled-memory-allocation",
+              "name": "UncontrolledAlloc",
+              "shortDescription": {
+                "text": "CWE-789: Uncontrolled Memory Allocation"
+              },
+              "fullDescription": {
+                "text": "Planted Uncontrolled Memory Allocation vulnerability (CWE-789)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-789"
+                ],
+                "cwe": "CWE-789",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/789.html"
+            },
+            {
+              "id": "python/integer-overflow",
+              "name": "IntegerOverflow",
+              "shortDescription": {
+                "text": "CWE-190: Integer Overflow or Wraparound"
+              },
+              "fullDescription": {
+                "text": "Planted Integer Overflow or Wraparound vulnerability (CWE-190)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-190"
+                ],
+                "cwe": "CWE-190",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/190.html"
+            },
+            {
+              "id": "python/infinite-loop",
+              "name": "InfiniteLoop",
+              "shortDescription": {
+                "text": "CWE-835: Loop With Unreachable Exit Condition"
+              },
+              "fullDescription": {
+                "text": "Planted Loop With Unreachable Exit Condition vulnerability (CWE-835)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-835"
+                ],
+                "cwe": "CWE-835",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/835.html"
+            },
+            {
+              "id": "python/divide-by-zero",
+              "name": "DivideByZero",
+              "shortDescription": {
+                "text": "CWE-369: Divide By Zero"
+              },
+              "fullDescription": {
+                "text": "Planted Divide By Zero vulnerability (CWE-369)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-369"
+                ],
+                "cwe": "CWE-369",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/369.html"
+            },
+            {
+              "id": "python/null-pointer-dereference",
+              "name": "NullDereference",
+              "shortDescription": {
+                "text": "CWE-476: NULL Pointer Dereference"
+              },
+              "fullDescription": {
+                "text": "Planted NULL Pointer Dereference vulnerability (CWE-476)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-476"
+                ],
+                "cwe": "CWE-476",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/476.html"
+            },
+            {
+              "id": "python/reachable-assertion",
+              "name": "ReachableAssertion",
+              "shortDescription": {
+                "text": "CWE-617: Reachable Assertion"
+              },
+              "fullDescription": {
+                "text": "Planted Reachable Assertion vulnerability (CWE-617)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-617"
+                ],
+                "cwe": "CWE-617",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/617.html"
+            },
+            {
+              "id": "python/use-of-wrong-operator-in-string-comparison",
+              "name": "WrongComparison",
+              "shortDescription": {
+                "text": "CWE-597: Use of Wrong Operator in String Comparison"
+              },
+              "fullDescription": {
+                "text": "Planted Use of Wrong Operator in String Comparison vulnerability (CWE-597)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-597"
+                ],
+                "cwe": "CWE-597",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/597.html"
+            },
+            {
+              "id": "python/information-exposure-through-directory-listing",
+              "name": "DirectoryListing",
+              "shortDescription": {
+                "text": "CWE-548: Information Exposure Through Directory Listing"
+              },
+              "fullDescription": {
+                "text": "Planted Information Exposure Through Directory Listing vulnerability (CWE-548)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-548"
+                ],
+                "cwe": "CWE-548",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/548.html"
+            },
+            {
+              "id": "python/information-exposure",
+              "name": "InformationExposure",
+              "shortDescription": {
+                "text": "CWE-200: Exposure of Sensitive Information"
+              },
+              "fullDescription": {
+                "text": "Planted Exposure of Sensitive Information vulnerability (CWE-200)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-200"
+                ],
+                "cwe": "CWE-200",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/200.html"
+            },
+            {
+              "id": "python/trust-boundary-violation",
+              "name": "TrustBoundary",
+              "shortDescription": {
+                "text": "CWE-501: Trust Boundary Violation"
+              },
+              "fullDescription": {
+                "text": "Planted Trust Boundary Violation vulnerability (CWE-501)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-501"
+                ],
+                "cwe": "CWE-501",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/501.html"
+            },
+            {
+              "id": "python/insufficient-verification-of-data-authenticity",
+              "name": "DataAuthenticity",
+              "shortDescription": {
+                "text": "CWE-345: Insufficient Verification of Data Authenticity"
+              },
+              "fullDescription": {
+                "text": "Planted Insufficient Verification of Data Authenticity vulnerability (CWE-345)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-345"
+                ],
+                "cwe": "CWE-345",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/345.html"
+            },
+            {
+              "id": "python/incorrect-numeric-conversion",
+              "name": "NumericConversion",
+              "shortDescription": {
+                "text": "CWE-681: Incorrect Numeric Conversion"
+              },
+              "fullDescription": {
+                "text": "Planted Incorrect Numeric Conversion vulnerability (CWE-681)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-681"
+                ],
+                "cwe": "CWE-681",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/681.html"
+            },
+            {
+              "id": "python/client-side-enforcement-of-server-side-security",
+              "name": "ClientSideEnforcement",
+              "shortDescription": {
+                "text": "CWE-602: Client-Side Enforcement of Server-Side Security"
+              },
+              "fullDescription": {
+                "text": "Planted Client-Side Enforcement of Server-Side Security vulnerability (CWE-602)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-602"
+                ],
+                "cwe": "CWE-602",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/602.html"
+            },
+            {
+              "id": "python/missing-default-case",
+              "name": "MissingDefault",
+              "shortDescription": {
+                "text": "CWE-478: Missing Default Case in Multiple Condition Expression"
+              },
+              "fullDescription": {
+                "text": "Planted Missing Default Case in Multiple Condition Expression vulnerability (CWE-478)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-478"
+                ],
+                "cwe": "CWE-478",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/478.html"
+            },
+            {
+              "id": "python/information-exposure-through-query-string",
+              "name": "QueryStringExposure",
+              "shortDescription": {
+                "text": "CWE-598: Information Exposure Through Query Strings"
+              },
+              "fullDescription": {
+                "text": "Planted Information Exposure Through Query Strings vulnerability (CWE-598)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-598"
+                ],
+                "cwe": "CWE-598",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/598.html"
             }
           ]
         }
@@ -2686,6 +3324,1126 @@
           "properties": {
             "vulnId": "VULN-60",
             "cwe": "CWE-434"
+          }
+        },
+        {
+          "ruleId": "python/sql-injection",
+          "ruleIndex": 0,
+          "level": "error",
+          "message": {
+            "text": "[VULN-61] CWE-89 Second-order SQL injection from previously stored value"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/advanced_injection_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 20,
+                  "snippet": {
+                    "text": "cur.execute(\"SELECT * FROM orders WHERE customer = '\" + stored_name + \"'\")"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-61",
+            "cwe": "CWE-89"
+          }
+        },
+        {
+          "ruleId": "python/sql-injection",
+          "ruleIndex": 0,
+          "level": "error",
+          "message": {
+            "text": "[VULN-62] CWE-89 SQL injection in LIKE clause"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/advanced_injection_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 27,
+                  "snippet": {
+                    "text": "cur.execute(\"SELECT * FROM products WHERE name LIKE '%\" + term + \"%'\")"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-62",
+            "cwe": "CWE-89"
+          }
+        },
+        {
+          "ruleId": "python/argument-injection",
+          "ruleIndex": 45,
+          "level": "error",
+          "message": {
+            "text": "[VULN-63] CWE-88 Argument injection into git via unsanitized input"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/advanced_injection_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 33,
+                  "snippet": {
+                    "text": "return subprocess.check_output([\"git\", \"log\", user_file])"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-63",
+            "cwe": "CWE-88"
+          }
+        },
+        {
+          "ruleId": "python/expression-language-injection",
+          "ruleIndex": 46,
+          "level": "error",
+          "message": {
+            "text": "[VULN-64] CWE-917 Expression language / Jinja expression injection"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/advanced_injection_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 38,
+                  "snippet": {
+                    "text": "return render_template_string(\"{{ \" + user_expr + \" }}\")"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-64",
+            "cwe": "CWE-917"
+          }
+        },
+        {
+          "ruleId": "python/xpath-injection",
+          "ruleIndex": 47,
+          "level": "error",
+          "message": {
+            "text": "[VULN-65] CWE-643 XPath injection via concatenated expression"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/advanced_injection_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 43,
+                  "snippet": {
+                    "text": "return tree.xpath(\"//users/user[name='\" + user + \"']\")"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-65",
+            "cwe": "CWE-643"
+          }
+        },
+        {
+          "ruleId": "python/crlf-injection",
+          "ruleIndex": 48,
+          "level": "error",
+          "message": {
+            "text": "[VULN-66] CWE-93 CRLF / header injection via Content-Disposition"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/advanced_injection_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 48,
+                  "snippet": {
+                    "text": "resp.headers[\"Content-Disposition\"] = \"attachment; filename=\" + filename"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-66",
+            "cwe": "CWE-93"
+          }
+        },
+        {
+          "ruleId": "python/cross-site-scripting",
+          "ruleIndex": 6,
+          "level": "error",
+          "message": {
+            "text": "[VULN-67] CWE-79 DOM-context XSS - input injected into inline script"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/advanced_injection_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 55,
+                  "snippet": {
+                    "text": "return Response(body, mimetype=\"text/html\")"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-67",
+            "cwe": "CWE-79"
+          }
+        },
+        {
+          "ruleId": "python/improper-encoding-or-escaping-of-output",
+          "ruleIndex": 49,
+          "level": "error",
+          "message": {
+            "text": "[VULN-68] CWE-116 Missing output encoding / no nosniff protection"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/advanced_injection_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 61,
+                  "snippet": {
+                    "text": "resp.headers[\"Content-Type\"] = \"text/html\""
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-68",
+            "cwe": "CWE-116"
+          }
+        },
+        {
+          "ruleId": "python/uncontrolled-format-string",
+          "ruleIndex": 50,
+          "level": "error",
+          "message": {
+            "text": "[VULN-69] CWE-134 Uncontrolled format string"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/advanced_injection_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 67,
+                  "snippet": {
+                    "text": "return user_fmt % value"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-69",
+            "cwe": "CWE-134"
+          }
+        },
+        {
+          "ruleId": "python/mass-assignment",
+          "ruleIndex": 51,
+          "level": "error",
+          "message": {
+            "text": "[VULN-70] CWE-915 Mass assignment - bind all request params to object"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/advanced_injection_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 72,
+                  "snippet": {
+                    "text": "for k, v in request.form.items():"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-70",
+            "cwe": "CWE-915"
+          }
+        },
+        {
+          "ruleId": "python/open-redirect",
+          "ruleIndex": 8,
+          "level": "error",
+          "message": {
+            "text": "[VULN-71] CWE-601 Open redirect via Refresh header"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/advanced_injection_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 79,
+                  "snippet": {
+                    "text": "resp.headers[\"Refresh\"] = \"0; url=\" + next_url"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-71",
+            "cwe": "CWE-601"
+          }
+        },
+        {
+          "ruleId": "python/server-side-request-forgery",
+          "ruleIndex": 14,
+          "level": "error",
+          "message": {
+            "text": "[VULN-72] CWE-918 SSRF - user URL fetched, redirects followed"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/advanced_injection_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 86,
+                  "snippet": {
+                    "text": "return requests.get(url, allow_redirects=True).text"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-72",
+            "cwe": "CWE-918"
+          }
+        },
+        {
+          "ruleId": "python/xml-entity-expansion",
+          "ruleIndex": 52,
+          "level": "error",
+          "message": {
+            "text": "[VULN-73] CWE-776 XML entity expansion (billion laughs) not disabled"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/advanced_injection_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 93,
+                  "snippet": {
+                    "text": "parser.setFeature(xml.sax.handler.feature_external_ges, True)"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-73",
+            "cwe": "CWE-776"
+          }
+        },
+        {
+          "ruleId": "python/cookie-without-samesite",
+          "ruleIndex": 53,
+          "level": "error",
+          "message": {
+            "text": "[VULN-74] CWE-1275 Cookie without SameSite attribute (CSRF exposure)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/advanced_injection_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 99,
+                  "snippet": {
+                    "text": "resp.set_cookie(\"auth\", token, samesite=None)"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-74",
+            "cwe": "CWE-1275"
+          }
+        },
+        {
+          "ruleId": "python/cross-site-request-forgery",
+          "ruleIndex": 54,
+          "level": "error",
+          "message": {
+            "text": "[VULN-75] CWE-352 State-changing POST without CSRF token verification"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/advanced_injection_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 105,
+                  "snippet": {
+                    "text": "db.execute(\"UPDATE settings SET email=?\", (request.form[\"email\"],))"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-75",
+            "cwe": "CWE-352"
+          }
+        },
+        {
+          "ruleId": "python/host-header-injection",
+          "ruleIndex": 55,
+          "level": "error",
+          "message": {
+            "text": "[VULN-76] CWE-644 Host header used to build password-reset link"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/advanced_injection_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 111,
+                  "snippet": {
+                    "text": "return \"https://\" + host + \"/reset?token=abc\""
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-76",
+            "cwe": "CWE-644"
+          }
+        },
+        {
+          "ruleId": "python/open-redirect",
+          "ruleIndex": 8,
+          "level": "error",
+          "message": {
+            "text": "[VULN-77] CWE-601 Open redirect via attacker-controlled meta refresh"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/advanced_injection_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 117,
+                  "snippet": {
+                    "text": "return Response(body, mimetype=\"text/html\")"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-77",
+            "cwe": "CWE-601"
+          }
+        },
+        {
+          "ruleId": "python/os-command-injection",
+          "ruleIndex": 1,
+          "level": "error",
+          "message": {
+            "text": "[VULN-78] CWE-78 OS command injection via shell expansion of env var"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/advanced_injection_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 123,
+                  "snippet": {
+                    "text": "return subprocess.check_output(\"echo $USER_INPUT\", shell=True)"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-78",
+            "cwe": "CWE-78"
+          }
+        },
+        {
+          "ruleId": "python/server-side-template-injection",
+          "ruleIndex": 7,
+          "level": "error",
+          "message": {
+            "text": "[VULN-79] CWE-1336 SSTI via Mako template built from user input"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/advanced_injection_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 129,
+                  "snippet": {
+                    "text": "return Template(tmpl_src).render()"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-79",
+            "cwe": "CWE-1336"
+          }
+        },
+        {
+          "ruleId": "python/redos",
+          "ruleIndex": 5,
+          "level": "error",
+          "message": {
+            "text": "[VULN-80] CWE-1333 ReDoS - catastrophic backtracking on user input"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/advanced_injection_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 134,
+                  "snippet": {
+                    "text": "return re.match(r\"^(a+)+$\", user_input)"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-80",
+            "cwe": "CWE-1333"
+          }
+        },
+        {
+          "ruleId": "python/toctou-race-condition",
+          "ruleIndex": 56,
+          "level": "error",
+          "message": {
+            "text": "[VULN-81] CWE-367 TOCTOU race between access() check and open()"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/concurrency_misc_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 21,
+                  "snippet": {
+                    "text": "if os.access(path, os.W_OK):"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-81",
+            "cwe": "CWE-367"
+          }
+        },
+        {
+          "ruleId": "python/race-condition",
+          "ruleIndex": 57,
+          "level": "error",
+          "message": {
+            "text": "[VULN-82] CWE-362 Race condition on shared mutable state (no lock)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/concurrency_misc_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 29,
+                  "snippet": {
+                    "text": "_counter = _counter + amount"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-82",
+            "cwe": "CWE-362"
+          }
+        },
+        {
+          "ruleId": "python/missing-release-of-resource",
+          "ruleIndex": 58,
+          "level": "error",
+          "message": {
+            "text": "[VULN-83] CWE-772 Resource leak - file opened but never closed"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/concurrency_misc_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 35,
+                  "snippet": {
+                    "text": "f = open(path)"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-83",
+            "cwe": "CWE-772"
+          }
+        },
+        {
+          "ruleId": "python/missing-release-of-resource",
+          "ruleIndex": 58,
+          "level": "error",
+          "message": {
+            "text": "[VULN-84] CWE-772 Resource leak - socket opened but never closed"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/concurrency_misc_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 42,
+                  "snippet": {
+                    "text": "s = socket.create_connection((host, port))"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-84",
+            "cwe": "CWE-772"
+          }
+        },
+        {
+          "ruleId": "python/uncontrolled-memory-allocation",
+          "ruleIndex": 59,
+          "level": "error",
+          "message": {
+            "text": "[VULN-85] CWE-789 Uncontrolled memory allocation from user-supplied size"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/concurrency_misc_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 49,
+                  "snippet": {
+                    "text": "return [0] * n"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-85",
+            "cwe": "CWE-789"
+          }
+        },
+        {
+          "ruleId": "python/integer-overflow",
+          "ruleIndex": 60,
+          "level": "error",
+          "message": {
+            "text": "[VULN-86] CWE-190 Integer overflow feeding an allocation/index"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/concurrency_misc_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 56,
+                  "snippet": {
+                    "text": "return bytearray(width * height)"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-86",
+            "cwe": "CWE-190"
+          }
+        },
+        {
+          "ruleId": "python/infinite-loop",
+          "ruleIndex": 61,
+          "level": "error",
+          "message": {
+            "text": "[VULN-87] CWE-835 Loop with unreachable exit condition (DoS)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/concurrency_misc_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 62,
+                  "snippet": {
+                    "text": "while n != 0:"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-87",
+            "cwe": "CWE-835"
+          }
+        },
+        {
+          "ruleId": "python/divide-by-zero",
+          "ruleIndex": 62,
+          "level": "error",
+          "message": {
+            "text": "[VULN-88] CWE-369 Divide by zero from unvalidated user input"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/concurrency_misc_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 70,
+                  "snippet": {
+                    "text": "return 100 / divisor"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-88",
+            "cwe": "CWE-369"
+          }
+        },
+        {
+          "ruleId": "python/null-pointer-dereference",
+          "ruleIndex": 63,
+          "level": "error",
+          "message": {
+            "text": "[VULN-89] CWE-476 Potential null/None dereference"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/concurrency_misc_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 76,
+                  "snippet": {
+                    "text": "return value.strip()"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-89",
+            "cwe": "CWE-476"
+          }
+        },
+        {
+          "ruleId": "python/reachable-assertion",
+          "ruleIndex": 64,
+          "level": "error",
+          "message": {
+            "text": "[VULN-90] CWE-617 Security check via assert (removed under -O)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/concurrency_misc_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 82,
+                  "snippet": {
+                    "text": "assert is_admin, \"forbidden\""
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-90",
+            "cwe": "CWE-617"
+          }
+        },
+        {
+          "ruleId": "python/use-of-wrong-operator-in-string-comparison",
+          "ruleIndex": 65,
+          "level": "error",
+          "message": {
+            "text": "[VULN-91] CWE-597 Use of 'is' for string comparison in auth decision"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/concurrency_misc_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 88,
+                  "snippet": {
+                    "text": "return token is expected"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-91",
+            "cwe": "CWE-597"
+          }
+        },
+        {
+          "ruleId": "python/use-of-hard-coded-credentials",
+          "ruleIndex": 18,
+          "level": "error",
+          "message": {
+            "text": "[VULN-92] CWE-798 Hard-coded database connection string with credentials"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/concurrency_misc_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 93,
+                  "snippet": {
+                    "text": "return \"postgres://***@10.0.0.5:5432/prod\""
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-92",
+            "cwe": "CWE-798"
+          }
+        },
+        {
+          "ruleId": "python/information-exposure-through-directory-listing",
+          "ruleIndex": 66,
+          "level": "error",
+          "message": {
+            "text": "[VULN-93] CWE-548 Directory listing / info exposure enabled"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/concurrency_misc_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 98,
+                  "snippet": {
+                    "text": "app.config[\"EXPLORER_ENABLE_DIRECTORY_LISTING\"] = True"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-93",
+            "cwe": "CWE-548"
+          }
+        },
+        {
+          "ruleId": "python/information-exposure",
+          "ruleIndex": 67,
+          "level": "error",
+          "message": {
+            "text": "[VULN-94] CWE-200 Information exposure via detailed Server header"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/concurrency_misc_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 104,
+                  "snippet": {
+                    "text": "resp.headers[\"Server\"] = \"Werkzeug/2.0.1 Python/3.9.2 app-build-1234\""
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-94",
+            "cwe": "CWE-200"
+          }
+        },
+        {
+          "ruleId": "python/trust-boundary-violation",
+          "ruleIndex": 68,
+          "level": "error",
+          "message": {
+            "text": "[VULN-95] CWE-501 Trust boundary violation - request data stored in session"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/concurrency_misc_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 110,
+                  "snippet": {
+                    "text": "session[\"role\"] = request.args.get(\"role\")"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-95",
+            "cwe": "CWE-501"
+          }
+        },
+        {
+          "ruleId": "python/insufficient-verification-of-data-authenticity",
+          "ruleIndex": 69,
+          "level": "error",
+          "message": {
+            "text": "[VULN-96] CWE-345 Insufficient verification of data authenticity (no HMAC check)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/concurrency_misc_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 116,
+                  "snippet": {
+                    "text": "return payload.decode()"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-96",
+            "cwe": "CWE-345"
+          }
+        },
+        {
+          "ruleId": "python/incorrect-numeric-conversion",
+          "ruleIndex": 70,
+          "level": "error",
+          "message": {
+            "text": "[VULN-97] CWE-681 Incorrect numeric conversion - float truncated to int for money"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/concurrency_misc_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 122,
+                  "snippet": {
+                    "text": "return int(amount)"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-97",
+            "cwe": "CWE-681"
+          }
+        },
+        {
+          "ruleId": "python/client-side-enforcement-of-server-side-security",
+          "ruleIndex": 71,
+          "level": "error",
+          "message": {
+            "text": "[VULN-98] CWE-602 Client-side enforcement of server-side security"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/concurrency_misc_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 127,
+                  "snippet": {
+                    "text": "if request.headers.get(\"X-Is-Admin\") == \"true\":"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-98",
+            "cwe": "CWE-602"
+          }
+        },
+        {
+          "ruleId": "python/missing-default-case",
+          "ruleIndex": 72,
+          "level": "error",
+          "message": {
+            "text": "[VULN-99] CWE-478 Missing default / mishandled branch grants extra perms"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/concurrency_misc_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 135,
+                  "snippet": {
+                    "text": "mapping = {\"read\": {\"r\"}, \"write\": {\"r\", \"w\"}}"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-99",
+            "cwe": "CWE-478"
+          }
+        },
+        {
+          "ruleId": "python/information-exposure-through-query-string",
+          "ruleIndex": 73,
+          "level": "error",
+          "message": {
+            "text": "[VULN-100] CWE-598 Sensitive information (API key) exposed via URL/query string"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/concurrency_misc_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 143,
+                  "snippet": {
+                    "text": "logger.info(\"Request URL: /data?api_key=\" + api_key)"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-100",
+            "cwe": "CWE-598"
           }
         }
       ]

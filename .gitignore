@@ -10,3 +10,9 @@ venv/
 .idea/
 .vscode/
 *.zip
+
+# LaTeX aux
+docs/*.aux
+docs/*.log
+docs/*.out
+docs/*.toc
