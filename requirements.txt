@@ -1,0 +1,9 @@
+# Dependencies referenced by the intentionally-vulnerable sample code.
+# NOTE: You do NOT need to install these to run the SAST test workflow
+# (zip -> scan -> sast_checker.py). They only matter if you try to import
+# the modules. Pinned loosely on purpose; this is a test fixture, not a product.
+Flask>=2.0
+PyJWT>=2.0
+PyYAML>=5.0
+lxml>=4.0
+pycryptodome>=3.10

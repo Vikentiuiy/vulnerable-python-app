@@ -1,0 +1,2694 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "VulnAppReferenceGroundTruth",
+          "informationUri": "https://example.com/vulnerable-python-app",
+          "version": "1.0.0",
+          "rules": [
+            {
+              "id": "python/sql-injection",
+              "name": "SQLInjection",
+              "shortDescription": {
+                "text": "CWE-89: SQL Injection"
+              },
+              "fullDescription": {
+                "text": "Planted SQL Injection vulnerability (CWE-89)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-89"
+                ],
+                "cwe": "CWE-89",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/89.html"
+            },
+            {
+              "id": "python/os-command-injection",
+              "name": "OSCommandInjection",
+              "shortDescription": {
+                "text": "CWE-78: OS Command Injection"
+              },
+              "fullDescription": {
+                "text": "Planted OS Command Injection vulnerability (CWE-78)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-78"
+                ],
+                "cwe": "CWE-78",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/78.html"
+            },
+            {
+              "id": "python/code-injection",
+              "name": "CodeInjection",
+              "shortDescription": {
+                "text": "CWE-95: Code Injection (eval/exec)"
+              },
+              "fullDescription": {
+                "text": "Planted Code Injection (eval/exec) vulnerability (CWE-95)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-95"
+                ],
+                "cwe": "CWE-95",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/95.html"
+            },
+            {
+              "id": "python/ldap-injection",
+              "name": "LDAPInjection",
+              "shortDescription": {
+                "text": "CWE-90: LDAP Injection"
+              },
+              "fullDescription": {
+                "text": "Planted LDAP Injection vulnerability (CWE-90)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-90"
+                ],
+                "cwe": "CWE-90",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/90.html"
+            },
+            {
+              "id": "python/nosql-injection",
+              "name": "NoSQLInjection",
+              "shortDescription": {
+                "text": "CWE-943: NoSQL Injection"
+              },
+              "fullDescription": {
+                "text": "Planted NoSQL Injection vulnerability (CWE-943)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-943"
+                ],
+                "cwe": "CWE-943",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/943.html"
+            },
+            {
+              "id": "python/redos",
+              "name": "ReDoS",
+              "shortDescription": {
+                "text": "CWE-1333: Inefficient Regular Expression (ReDoS)"
+              },
+              "fullDescription": {
+                "text": "Planted Inefficient Regular Expression (ReDoS) vulnerability (CWE-1333)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-1333"
+                ],
+                "cwe": "CWE-1333",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/1333.html"
+            },
+            {
+              "id": "python/cross-site-scripting",
+              "name": "CrossSiteScripting",
+              "shortDescription": {
+                "text": "CWE-79: Cross-Site Scripting"
+              },
+              "fullDescription": {
+                "text": "Planted Cross-Site Scripting vulnerability (CWE-79)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-79"
+                ],
+                "cwe": "CWE-79",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/79.html"
+            },
+            {
+              "id": "python/server-side-template-injection",
+              "name": "SSTI",
+              "shortDescription": {
+                "text": "CWE-1336: Server-Side Template Injection"
+              },
+              "fullDescription": {
+                "text": "Planted Server-Side Template Injection vulnerability (CWE-1336)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-1336"
+                ],
+                "cwe": "CWE-1336",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/1336.html"
+            },
+            {
+              "id": "python/open-redirect",
+              "name": "OpenRedirect",
+              "shortDescription": {
+                "text": "CWE-601: Open Redirect"
+              },
+              "fullDescription": {
+                "text": "Planted Open Redirect vulnerability (CWE-601)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-601"
+                ],
+                "cwe": "CWE-601",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/601.html"
+            },
+            {
+              "id": "python/http-response-splitting",
+              "name": "HTTPResponseSplitting",
+              "shortDescription": {
+                "text": "CWE-113: HTTP Response Splitting"
+              },
+              "fullDescription": {
+                "text": "Planted HTTP Response Splitting vulnerability (CWE-113)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-113"
+                ],
+                "cwe": "CWE-113",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/113.html"
+            },
+            {
+              "id": "python/sensitive-cookie-without-secure-httponly",
+              "name": "InsecureCookie",
+              "shortDescription": {
+                "text": "CWE-614: Sensitive Cookie Without Secure/HttpOnly"
+              },
+              "fullDescription": {
+                "text": "Planted Sensitive Cookie Without Secure/HttpOnly vulnerability (CWE-614)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-614"
+                ],
+                "cwe": "CWE-614",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/614.html"
+            },
+            {
+              "id": "python/permissive-cors",
+              "name": "PermissiveCORS",
+              "shortDescription": {
+                "text": "CWE-942: Overly Permissive CORS"
+              },
+              "fullDescription": {
+                "text": "Planted Overly Permissive CORS vulnerability (CWE-942)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-942"
+                ],
+                "cwe": "CWE-942",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/942.html"
+            },
+            {
+              "id": "python/clickjacking",
+              "name": "Clickjacking",
+              "shortDescription": {
+                "text": "CWE-1021: Missing Anti-Clickjacking Header"
+              },
+              "fullDescription": {
+                "text": "Planted Missing Anti-Clickjacking Header vulnerability (CWE-1021)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-1021"
+                ],
+                "cwe": "CWE-1021",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/1021.html"
+            },
+            {
+              "id": "python/path-traversal",
+              "name": "PathTraversal",
+              "shortDescription": {
+                "text": "CWE-22: Path Traversal"
+              },
+              "fullDescription": {
+                "text": "Planted Path Traversal vulnerability (CWE-22)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-22"
+                ],
+                "cwe": "CWE-22",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/22.html"
+            },
+            {
+              "id": "python/server-side-request-forgery",
+              "name": "SSRF",
+              "shortDescription": {
+                "text": "CWE-918: Server-Side Request Forgery"
+              },
+              "fullDescription": {
+                "text": "Planted Server-Side Request Forgery vulnerability (CWE-918)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-918"
+                ],
+                "cwe": "CWE-918",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/918.html"
+            },
+            {
+              "id": "python/insecure-temporary-file",
+              "name": "InsecureTempFile",
+              "shortDescription": {
+                "text": "CWE-377: Insecure Temporary File"
+              },
+              "fullDescription": {
+                "text": "Planted Insecure Temporary File vulnerability (CWE-377)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-377"
+                ],
+                "cwe": "CWE-377",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/377.html"
+            },
+            {
+              "id": "python/incorrect-permission-assignment",
+              "name": "IncorrectPermissions",
+              "shortDescription": {
+                "text": "CWE-732: Incorrect Permission Assignment"
+              },
+              "fullDescription": {
+                "text": "Planted Incorrect Permission Assignment vulnerability (CWE-732)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-732"
+                ],
+                "cwe": "CWE-732",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/732.html"
+            },
+            {
+              "id": "python/deserialization-of-untrusted-data",
+              "name": "InsecureDeserialization",
+              "shortDescription": {
+                "text": "CWE-502: Deserialization of Untrusted Data"
+              },
+              "fullDescription": {
+                "text": "Planted Deserialization of Untrusted Data vulnerability (CWE-502)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-502"
+                ],
+                "cwe": "CWE-502",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/502.html"
+            },
+            {
+              "id": "python/use-of-hard-coded-credentials",
+              "name": "HardcodedCredentials",
+              "shortDescription": {
+                "text": "CWE-798: Use of Hard-coded Credentials"
+              },
+              "fullDescription": {
+                "text": "Planted Use of Hard-coded Credentials vulnerability (CWE-798)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-798"
+                ],
+                "cwe": "CWE-798",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/798.html"
+            },
+            {
+              "id": "python/use-of-hard-coded-password",
+              "name": "HardcodedPassword",
+              "shortDescription": {
+                "text": "CWE-259: Use of Hard-coded Password"
+              },
+              "fullDescription": {
+                "text": "Planted Use of Hard-coded Password vulnerability (CWE-259)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-259"
+                ],
+                "cwe": "CWE-259",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/259.html"
+            },
+            {
+              "id": "python/broken-risky-crypto-algorithm",
+              "name": "WeakCrypto",
+              "shortDescription": {
+                "text": "CWE-327: Broken/Risky Cryptographic Algorithm"
+              },
+              "fullDescription": {
+                "text": "Planted Broken/Risky Cryptographic Algorithm vulnerability (CWE-327)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-327"
+                ],
+                "cwe": "CWE-327",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/327.html"
+            },
+            {
+              "id": "python/not-using-random-iv-with-cbc",
+              "name": "StaticIV",
+              "shortDescription": {
+                "text": "CWE-329: Not Using Random IV With CBC"
+              },
+              "fullDescription": {
+                "text": "Planted Not Using Random IV With CBC vulnerability (CWE-329)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-329"
+                ],
+                "cwe": "CWE-329",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/329.html"
+            },
+            {
+              "id": "python/insufficiently-random-values",
+              "name": "InsecureRandomness",
+              "shortDescription": {
+                "text": "CWE-330: Use of Insufficiently Random Values"
+              },
+              "fullDescription": {
+                "text": "Planted Use of Insufficiently Random Values vulnerability (CWE-330)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-330"
+                ],
+                "cwe": "CWE-330",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/330.html"
+            },
+            {
+              "id": "python/predictable-seed-in-prng",
+              "name": "PredictableSeed",
+              "shortDescription": {
+                "text": "CWE-337: Predictable Seed in PRNG"
+              },
+              "fullDescription": {
+                "text": "Planted Predictable Seed in PRNG vulnerability (CWE-337)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-337"
+                ],
+                "cwe": "CWE-337",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/337.html"
+            },
+            {
+              "id": "python/password-hash-without-salt",
+              "name": "UnsaltedHash",
+              "shortDescription": {
+                "text": "CWE-759: Password Hash Without Salt"
+              },
+              "fullDescription": {
+                "text": "Planted Password Hash Without Salt vulnerability (CWE-759)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-759"
+                ],
+                "cwe": "CWE-759",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/759.html"
+            },
+            {
+              "id": "python/missing-authentication-for-critical-function",
+              "name": "MissingAuth",
+              "shortDescription": {
+                "text": "CWE-306: Missing Authentication for Critical Function"
+              },
+              "fullDescription": {
+                "text": "Planted Missing Authentication for Critical Function vulnerability (CWE-306)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-306"
+                ],
+                "cwe": "CWE-306",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/306.html"
+            },
+            {
+              "id": "python/authorization-bypass-idor",
+              "name": "IDOR",
+              "shortDescription": {
+                "text": "CWE-639: Authorization Bypass / IDOR"
+              },
+              "fullDescription": {
+                "text": "Planted Authorization Bypass / IDOR vulnerability (CWE-639)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-639"
+                ],
+                "cwe": "CWE-639",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/639.html"
+            },
+            {
+              "id": "python/improper-privilege-management",
+              "name": "PrivilegeMgmt",
+              "shortDescription": {
+                "text": "CWE-269: Improper Privilege Management"
+              },
+              "fullDescription": {
+                "text": "Planted Improper Privilege Management vulnerability (CWE-269)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-269"
+                ],
+                "cwe": "CWE-269",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/269.html"
+            },
+            {
+              "id": "python/plaintext-storage-of-password",
+              "name": "PlaintextPassword",
+              "shortDescription": {
+                "text": "CWE-256: Plaintext Storage of Password"
+              },
+              "fullDescription": {
+                "text": "Planted Plaintext Storage of Password vulnerability (CWE-256)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-256"
+                ],
+                "cwe": "CWE-256",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/256.html"
+            },
+            {
+              "id": "python/inadequate-encryption-strength",
+              "name": "WeakEncryption",
+              "shortDescription": {
+                "text": "CWE-326: Inadequate Encryption Strength"
+              },
+              "fullDescription": {
+                "text": "Planted Inadequate Encryption Strength vulnerability (CWE-326)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-326"
+                ],
+                "cwe": "CWE-326",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/326.html"
+            },
+            {
+              "id": "python/improper-authentication",
+              "name": "ImproperAuth",
+              "shortDescription": {
+                "text": "CWE-287: Improper Authentication"
+              },
+              "fullDescription": {
+                "text": "Planted Improper Authentication vulnerability (CWE-287)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-287"
+                ],
+                "cwe": "CWE-287",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/287.html"
+            },
+            {
+              "id": "python/weak-password-requirements",
+              "name": "WeakPasswordReq",
+              "shortDescription": {
+                "text": "CWE-521: Weak Password Requirements"
+              },
+              "fullDescription": {
+                "text": "Planted Weak Password Requirements vulnerability (CWE-521)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-521"
+                ],
+                "cwe": "CWE-521",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/521.html"
+            },
+            {
+              "id": "python/observable-timing-discrepancy",
+              "name": "TimingDiscrepancy",
+              "shortDescription": {
+                "text": "CWE-208: Observable Timing Discrepancy"
+              },
+              "fullDescription": {
+                "text": "Planted Observable Timing Discrepancy vulnerability (CWE-208)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-208"
+                ],
+                "cwe": "CWE-208",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/208.html"
+            },
+            {
+              "id": "python/improper-verification-of-cryptographic-signature",
+              "name": "JWTNotVerified",
+              "shortDescription": {
+                "text": "CWE-347: Improper Verification of Cryptographic Signature"
+              },
+              "fullDescription": {
+                "text": "Planted Improper Verification of Cryptographic Signature vulnerability (CWE-347)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-347"
+                ],
+                "cwe": "CWE-347",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/347.html"
+            },
+            {
+              "id": "python/improper-restriction-of-excessive-authentication-attempts",
+              "name": "NoRateLimit",
+              "shortDescription": {
+                "text": "CWE-307: Improper Restriction of Excessive Auth Attempts"
+              },
+              "fullDescription": {
+                "text": "Planted Improper Restriction of Excessive Auth Attempts vulnerability (CWE-307)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-307"
+                ],
+                "cwe": "CWE-307",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/307.html"
+            },
+            {
+              "id": "python/information-exposure-through-error-message",
+              "name": "ErrorMessageExposure",
+              "shortDescription": {
+                "text": "CWE-209: Information Exposure Through Error Message"
+              },
+              "fullDescription": {
+                "text": "Planted Information Exposure Through Error Message vulnerability (CWE-209)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-209"
+                ],
+                "cwe": "CWE-209",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/209.html"
+            },
+            {
+              "id": "python/xml-external-entity-xxe",
+              "name": "XXE",
+              "shortDescription": {
+                "text": "CWE-611: XML External Entity (XXE)"
+              },
+              "fullDescription": {
+                "text": "Planted XML External Entity (XXE) vulnerability (CWE-611)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-611"
+                ],
+                "cwe": "CWE-611",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/611.html"
+            },
+            {
+              "id": "python/unsafe-reflection",
+              "name": "UnsafeReflection",
+              "shortDescription": {
+                "text": "CWE-470: Unsafe Reflection"
+              },
+              "fullDescription": {
+                "text": "Planted Unsafe Reflection vulnerability (CWE-470)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-470"
+                ],
+                "cwe": "CWE-470",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/470.html"
+            },
+            {
+              "id": "python/log-injection",
+              "name": "LogInjection",
+              "shortDescription": {
+                "text": "CWE-117: Log Injection"
+              },
+              "fullDescription": {
+                "text": "Planted Log Injection vulnerability (CWE-117)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-117"
+                ],
+                "cwe": "CWE-117",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/117.html"
+            },
+            {
+              "id": "python/insertion-of-sensitive-information-into-log-file",
+              "name": "SensitiveLog",
+              "shortDescription": {
+                "text": "CWE-532: Sensitive Information in Log File"
+              },
+              "fullDescription": {
+                "text": "Planted Sensitive Information in Log File vulnerability (CWE-532)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-532"
+                ],
+                "cwe": "CWE-532",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/532.html"
+            },
+            {
+              "id": "python/improper-certificate-validation",
+              "name": "ImproperCertValidation",
+              "shortDescription": {
+                "text": "CWE-295: Improper Certificate Validation"
+              },
+              "fullDescription": {
+                "text": "Planted Improper Certificate Validation vulnerability (CWE-295)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-295"
+                ],
+                "cwe": "CWE-295",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/295.html"
+            },
+            {
+              "id": "python/active-debug-code",
+              "name": "ActiveDebugCode",
+              "shortDescription": {
+                "text": "CWE-489: Active Debug Code"
+              },
+              "fullDescription": {
+                "text": "Planted Active Debug Code vulnerability (CWE-489)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-489"
+                ],
+                "cwe": "CWE-489",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/489.html"
+            },
+            {
+              "id": "python/cleartext-storage-of-sensitive-information",
+              "name": "CleartextStorage",
+              "shortDescription": {
+                "text": "CWE-312: Cleartext Storage of Sensitive Information"
+              },
+              "fullDescription": {
+                "text": "Planted Cleartext Storage of Sensitive Information vulnerability (CWE-312)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-312"
+                ],
+                "cwe": "CWE-312",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/312.html"
+            },
+            {
+              "id": "python/improper-input-validation",
+              "name": "ImproperInputValidation",
+              "shortDescription": {
+                "text": "CWE-20: Improper Input Validation"
+              },
+              "fullDescription": {
+                "text": "Planted Improper Input Validation vulnerability (CWE-20)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-20"
+                ],
+                "cwe": "CWE-20",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/20.html"
+            },
+            {
+              "id": "python/unrestricted-file-upload",
+              "name": "UnrestrictedUpload",
+              "shortDescription": {
+                "text": "CWE-434: Unrestricted File Upload"
+              },
+              "fullDescription": {
+                "text": "Planted Unrestricted File Upload vulnerability (CWE-434)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "properties": {
+                "tags": [
+                  "security",
+                  "cwe-434"
+                ],
+                "cwe": "CWE-434",
+                "security-severity": "8.0"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/434.html"
+            }
+          ]
+        }
+      },
+      "originalUriBaseIds": {
+        "SRCROOT": {
+          "uri": "file:///vulnerable-python-app/"
+        }
+      },
+      "results": [
+        {
+          "ruleId": "python/sql-injection",
+          "ruleIndex": 0,
+          "level": "error",
+          "message": {
+            "text": "[VULN-01] CWE-89 SQL Injection via string concatenation"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/injection_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 18,
+                  "snippet": {
+                    "text": "cur.execute(\"SELECT * FROM users WHERE id = '\" + user_id + \"'\")"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-01",
+            "cwe": "CWE-89"
+          }
+        },
+        {
+          "ruleId": "python/sql-injection",
+          "ruleIndex": 0,
+          "level": "error",
+          "message": {
+            "text": "[VULN-02] CWE-89 SQL Injection via %-format-built query"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/injection_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 26,
+                  "snippet": {
+                    "text": "cur.execute(q)"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-02",
+            "cwe": "CWE-89"
+          }
+        },
+        {
+          "ruleId": "python/sql-injection",
+          "ruleIndex": 0,
+          "level": "error",
+          "message": {
+            "text": "[VULN-03] CWE-89 SQL Injection via f-string in UPDATE"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/injection_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 33,
+                  "snippet": {
+                    "text": "cur.execute(f\"UPDATE users SET role='{role}' WHERE id={uid}\")"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-03",
+            "cwe": "CWE-89"
+          }
+        },
+        {
+          "ruleId": "python/os-command-injection",
+          "ruleIndex": 1,
+          "level": "error",
+          "message": {
+            "text": "[VULN-04] CWE-78 OS Command Injection via os.system"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/injection_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 39,
+                  "snippet": {
+                    "text": "os.system(\"ping -c 1 \" + host)"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-04",
+            "cwe": "CWE-78"
+          }
+        },
+        {
+          "ruleId": "python/os-command-injection",
+          "ruleIndex": 1,
+          "level": "error",
+          "message": {
+            "text": "[VULN-05] CWE-78 OS Command Injection via subprocess shell=True"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/injection_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 44,
+                  "snippet": {
+                    "text": "return subprocess.check_output(\"cat \" + filename, shell=True)"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-05",
+            "cwe": "CWE-78"
+          }
+        },
+        {
+          "ruleId": "python/os-command-injection",
+          "ruleIndex": 1,
+          "level": "error",
+          "message": {
+            "text": "[VULN-06] CWE-78 OS Command Injection via os.popen"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/injection_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 50,
+                  "snippet": {
+                    "text": "return os.popen(cmd).read()"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-06",
+            "cwe": "CWE-78"
+          }
+        },
+        {
+          "ruleId": "python/code-injection",
+          "ruleIndex": 2,
+          "level": "error",
+          "message": {
+            "text": "[VULN-07] CWE-95 Code injection via eval() of user input"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/injection_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 55,
+                  "snippet": {
+                    "text": "return eval(expr)"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-07",
+            "cwe": "CWE-95"
+          }
+        },
+        {
+          "ruleId": "python/code-injection",
+          "ruleIndex": 2,
+          "level": "error",
+          "message": {
+            "text": "[VULN-08] CWE-95 Code injection via exec() of user input"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/injection_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 60,
+                  "snippet": {
+                    "text": "exec(src)"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-08",
+            "cwe": "CWE-95"
+          }
+        },
+        {
+          "ruleId": "python/ldap-injection",
+          "ruleIndex": 3,
+          "level": "error",
+          "message": {
+            "text": "[VULN-09] CWE-90 LDAP Injection via unsanitized filter"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/injection_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 65,
+                  "snippet": {
+                    "text": "return conn.search_s(\"ou=users,dc=example,dc=com\", 2, \"(uid=\" + username + \")\")"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-09",
+            "cwe": "CWE-90"
+          }
+        },
+        {
+          "ruleId": "python/nosql-injection",
+          "ruleIndex": 4,
+          "level": "error",
+          "message": {
+            "text": "[VULN-10] CWE-943 NoSQL injection via $where with user input"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/injection_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 70,
+                  "snippet": {
+                    "text": "return collection.find({\"$where\": \"this.name == '\" + username + \"'\"})"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-10",
+            "cwe": "CWE-943"
+          }
+        },
+        {
+          "ruleId": "python/redos",
+          "ruleIndex": 5,
+          "level": "error",
+          "message": {
+            "text": "[VULN-11] CWE-1333 ReDoS - user-controlled regex pattern"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/injection_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 75,
+                  "snippet": {
+                    "text": "return re.match(user_pattern, text)"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-11",
+            "cwe": "CWE-1333"
+          }
+        },
+        {
+          "ruleId": "python/cross-site-scripting",
+          "ruleIndex": 6,
+          "level": "error",
+          "message": {
+            "text": "[VULN-12] CWE-79 Reflected XSS - tainted param written to response"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/web_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 12,
+                  "snippet": {
+                    "text": "return Response(\"<h1>Hello \" + name + \"</h1>\", mimetype=\"text/html\")"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-12",
+            "cwe": "CWE-79"
+          }
+        },
+        {
+          "ruleId": "python/cross-site-scripting",
+          "ruleIndex": 6,
+          "level": "error",
+          "message": {
+            "text": "[VULN-13] CWE-79 Stored XSS - unescaped user content rendered"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/web_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 18,
+                  "snippet": {
+                    "text": "return Response(html, mimetype=\"text/html\")"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-13",
+            "cwe": "CWE-79"
+          }
+        },
+        {
+          "ruleId": "python/server-side-template-injection",
+          "ruleIndex": 7,
+          "level": "error",
+          "message": {
+            "text": "[VULN-14] CWE-1336 Server-Side Template Injection via render_template_string"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/web_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 23,
+                  "snippet": {
+                    "text": "return render_template_string(\"Hello \" + template_src)"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-14",
+            "cwe": "CWE-1336"
+          }
+        },
+        {
+          "ruleId": "python/open-redirect",
+          "ruleIndex": 8,
+          "level": "error",
+          "message": {
+            "text": "[VULN-15] CWE-601 Open Redirect to attacker-controlled URL"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/web_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 28,
+                  "snippet": {
+                    "text": "return redirect(target)"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-15",
+            "cwe": "CWE-601"
+          }
+        },
+        {
+          "ruleId": "python/http-response-splitting",
+          "ruleIndex": 9,
+          "level": "error",
+          "message": {
+            "text": "[VULN-16] CWE-113 HTTP Response Splitting / header injection"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/web_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 34,
+                  "snippet": {
+                    "text": "resp.headers[\"Location\"] = location"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-16",
+            "cwe": "CWE-113"
+          }
+        },
+        {
+          "ruleId": "python/sensitive-cookie-without-secure-httponly",
+          "ruleIndex": 10,
+          "level": "error",
+          "message": {
+            "text": "[VULN-17] CWE-614 Sensitive cookie without Secure/HttpOnly flags"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/web_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 40,
+                  "snippet": {
+                    "text": "resp.set_cookie(\"session\", session_id, secure=False, httponly=False)"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-17",
+            "cwe": "CWE-614"
+          }
+        },
+        {
+          "ruleId": "python/permissive-cors",
+          "ruleIndex": 11,
+          "level": "error",
+          "message": {
+            "text": "[VULN-18] CWE-942 Overly permissive CORS (wildcard + credentials)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/web_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 46,
+                  "snippet": {
+                    "text": "resp.headers[\"Access-Control-Allow-Origin\"] = \"*\""
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-18",
+            "cwe": "CWE-942"
+          }
+        },
+        {
+          "ruleId": "python/clickjacking",
+          "ruleIndex": 12,
+          "level": "error",
+          "message": {
+            "text": "[VULN-19] CWE-1021 Missing anti-clickjacking header (X-Frame-Options)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/web_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 53,
+                  "snippet": {
+                    "text": "resp.headers[\"Content-Type\"] = \"text/html\""
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-19",
+            "cwe": "CWE-1021"
+          }
+        },
+        {
+          "ruleId": "python/path-traversal",
+          "ruleIndex": 13,
+          "level": "error",
+          "message": {
+            "text": "[VULN-20] CWE-22 Path Traversal - tainted filename joined to base"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/file_network_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 17,
+                  "snippet": {
+                    "text": "with open(base + filename) as f:"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-20",
+            "cwe": "CWE-22"
+          }
+        },
+        {
+          "ruleId": "python/path-traversal",
+          "ruleIndex": 13,
+          "level": "error",
+          "message": {
+            "text": "[VULN-21] CWE-22 Path Traversal on write allows arbitrary file overwrite"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/file_network_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 23,
+                  "snippet": {
+                    "text": "with open(os.path.join(\"/var/www/uploads/\", filename), \"w\") as f:"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-21",
+            "cwe": "CWE-22"
+          }
+        },
+        {
+          "ruleId": "python/server-side-request-forgery",
+          "ruleIndex": 14,
+          "level": "error",
+          "message": {
+            "text": "[VULN-22] CWE-918 SSRF - request to user-controlled URL"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/file_network_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 29,
+                  "snippet": {
+                    "text": "return urllib.request.urlopen(url).read()"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-22",
+            "cwe": "CWE-918"
+          }
+        },
+        {
+          "ruleId": "python/path-traversal",
+          "ruleIndex": 13,
+          "level": "error",
+          "message": {
+            "text": "[VULN-23] CWE-22 Tar Slip - members extracted without path validation"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/file_network_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 35,
+                  "snippet": {
+                    "text": "tf.extractall(dest)"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-23",
+            "cwe": "CWE-22"
+          }
+        },
+        {
+          "ruleId": "python/insecure-temporary-file",
+          "ruleIndex": 15,
+          "level": "error",
+          "message": {
+            "text": "[VULN-24] CWE-377 Insecure temporary file creation (predictable name)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/file_network_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 41,
+                  "snippet": {
+                    "text": "path = \"/tmp/app_\" + str(os.getpid()) + \".tmp\""
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-24",
+            "cwe": "CWE-377"
+          }
+        },
+        {
+          "ruleId": "python/incorrect-permission-assignment",
+          "ruleIndex": 16,
+          "level": "error",
+          "message": {
+            "text": "[VULN-25] CWE-732 Overly permissive file permissions (world-writable)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/file_network_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 49,
+                  "snippet": {
+                    "text": "os.chmod(path, 0o777)"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-25",
+            "cwe": "CWE-732"
+          }
+        },
+        {
+          "ruleId": "python/deserialization-of-untrusted-data",
+          "ruleIndex": 17,
+          "level": "error",
+          "message": {
+            "text": "[VULN-26] CWE-502 Insecure deserialization of untrusted data (pickle)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/file_network_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 54,
+                  "snippet": {
+                    "text": "return pickle.loads(data)"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-26",
+            "cwe": "CWE-502"
+          }
+        },
+        {
+          "ruleId": "python/use-of-hard-coded-credentials",
+          "ruleIndex": 18,
+          "level": "error",
+          "message": {
+            "text": "[VULN-27] CWE-798 Hardcoded credentials (password)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/crypto_secret_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 11,
+                  "snippet": {
+                    "text": "DB_PASSWORD = \"SuperSecret123!\""
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-27",
+            "cwe": "CWE-798"
+          }
+        },
+        {
+          "ruleId": "python/use-of-hard-coded-credentials",
+          "ruleIndex": 18,
+          "level": "error",
+          "message": {
+            "text": "[VULN-28] CWE-798 Hardcoded cryptographic key"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/crypto_secret_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 13,
+                  "snippet": {
+                    "text": "AES_KEY = b\"0123456789abcdef\""
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-28",
+            "cwe": "CWE-798"
+          }
+        },
+        {
+          "ruleId": "python/use-of-hard-coded-password",
+          "ruleIndex": 19,
+          "level": "error",
+          "message": {
+            "text": "[VULN-29] CWE-259 Hardcoded API token"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/crypto_secret_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 15,
+                  "snippet": {
+                    "text": "API_TOKEN = \"sk_live_51H8xYzABCDEF0123456789\""
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-29",
+            "cwe": "CWE-259"
+          }
+        },
+        {
+          "ruleId": "python/broken-risky-crypto-algorithm",
+          "ruleIndex": 20,
+          "level": "error",
+          "message": {
+            "text": "[VULN-30] CWE-327 Weak hashing algorithm MD5"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/crypto_secret_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 20,
+                  "snippet": {
+                    "text": "return hashlib.md5(password.encode()).hexdigest()"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-30",
+            "cwe": "CWE-327"
+          }
+        },
+        {
+          "ruleId": "python/broken-risky-crypto-algorithm",
+          "ruleIndex": 20,
+          "level": "error",
+          "message": {
+            "text": "[VULN-31] CWE-327 Weak hashing algorithm SHA-1"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/crypto_secret_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 25,
+                  "snippet": {
+                    "text": "return hashlib.sha1(data.encode()).hexdigest()"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-31",
+            "cwe": "CWE-327"
+          }
+        },
+        {
+          "ruleId": "python/broken-risky-crypto-algorithm",
+          "ruleIndex": 20,
+          "level": "error",
+          "message": {
+            "text": "[VULN-32] CWE-327 Weak/broken cipher DES"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/crypto_secret_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 31,
+                  "snippet": {
+                    "text": "cipher = DES.new(b\"8bytekey\", DES.MODE_ECB)"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-32",
+            "cwe": "CWE-327"
+          }
+        },
+        {
+          "ruleId": "python/broken-risky-crypto-algorithm",
+          "ruleIndex": 20,
+          "level": "error",
+          "message": {
+            "text": "[VULN-33] CWE-327 Insecure ECB block cipher mode"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/crypto_secret_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 38,
+                  "snippet": {
+                    "text": "cipher = AES.new(AES_KEY, AES.MODE_ECB)"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-33",
+            "cwe": "CWE-327"
+          }
+        },
+        {
+          "ruleId": "python/not-using-random-iv-with-cbc",
+          "ruleIndex": 21,
+          "level": "error",
+          "message": {
+            "text": "[VULN-34] CWE-329 Static/zero IV used for CBC encryption"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/crypto_secret_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 46,
+                  "snippet": {
+                    "text": "cipher = AES.new(AES_KEY, AES.MODE_CBC, iv)"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-34",
+            "cwe": "CWE-329"
+          }
+        },
+        {
+          "ruleId": "python/insufficiently-random-values",
+          "ruleIndex": 22,
+          "level": "error",
+          "message": {
+            "text": "[VULN-35] CWE-330 Insecure randomness for security token"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/crypto_secret_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 52,
+                  "snippet": {
+                    "text": "return \"\".join(random.choice(\"0123456789abcdef\") for _ in range(32))"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-35",
+            "cwe": "CWE-330"
+          }
+        },
+        {
+          "ruleId": "python/predictable-seed-in-prng",
+          "ruleIndex": 23,
+          "level": "error",
+          "message": {
+            "text": "[VULN-36] CWE-337 Predictable seed for PRNG"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/crypto_secret_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 57,
+                  "snippet": {
+                    "text": "random.seed(1234)"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-36",
+            "cwe": "CWE-337"
+          }
+        },
+        {
+          "ruleId": "python/password-hash-without-salt",
+          "ruleIndex": 24,
+          "level": "error",
+          "message": {
+            "text": "[VULN-37] CWE-759 Password hashed without a salt"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/crypto_secret_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 63,
+                  "snippet": {
+                    "text": "return hashlib.sha256(password.encode()).hexdigest()"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-37",
+            "cwe": "CWE-759"
+          }
+        },
+        {
+          "ruleId": "python/missing-authentication-for-critical-function",
+          "ruleIndex": 25,
+          "level": "error",
+          "message": {
+            "text": "[VULN-38] CWE-306 Missing authentication for critical function (delete)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/auth_api_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 17,
+                  "snippet": {
+                    "text": "db.execute(\"DELETE FROM users WHERE id=?\", (user_id,))"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-38",
+            "cwe": "CWE-306"
+          }
+        },
+        {
+          "ruleId": "python/authorization-bypass-idor",
+          "ruleIndex": 26,
+          "level": "error",
+          "message": {
+            "text": "[VULN-39] CWE-639 IDOR / authorization bypass - no owner check"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/auth_api_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 23,
+                  "snippet": {
+                    "text": "return db.execute(\"SELECT body FROM docs WHERE id=?\", (doc_id,)).fetchone()"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-39",
+            "cwe": "CWE-639"
+          }
+        },
+        {
+          "ruleId": "python/improper-privilege-management",
+          "ruleIndex": 27,
+          "level": "error",
+          "message": {
+            "text": "[VULN-40] CWE-269 Improper privilege management - role from client input"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/auth_api_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 28,
+                  "snippet": {
+                    "text": "role = request.args.get(\"role\", \"user\")"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-40",
+            "cwe": "CWE-269"
+          }
+        },
+        {
+          "ruleId": "python/plaintext-storage-of-password",
+          "ruleIndex": 28,
+          "level": "error",
+          "message": {
+            "text": "[VULN-41] CWE-256 Plaintext storage of password"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/auth_api_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 34,
+                  "snippet": {
+                    "text": "db.execute(\"INSERT INTO users(name, password) VALUES(?,?)\", (username, password))"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-41",
+            "cwe": "CWE-256"
+          }
+        },
+        {
+          "ruleId": "python/inadequate-encryption-strength",
+          "ruleIndex": 29,
+          "level": "error",
+          "message": {
+            "text": "[VULN-42] CWE-326 Base64 mistaken for encryption of sensitive data"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/auth_api_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 39,
+                  "snippet": {
+                    "text": "return base64.b64encode(secret.encode()).decode()"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-42",
+            "cwe": "CWE-326"
+          }
+        },
+        {
+          "ruleId": "python/improper-authentication",
+          "ruleIndex": 30,
+          "level": "error",
+          "message": {
+            "text": "[VULN-43] CWE-287 Improper authentication - trusting client-supplied id"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/auth_api_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 44,
+                  "snippet": {
+                    "text": "return {\"logged_in_as\": request.headers.get(\"X-User-Id\")}"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-43",
+            "cwe": "CWE-287"
+          }
+        },
+        {
+          "ruleId": "python/weak-password-requirements",
+          "ruleIndex": 31,
+          "level": "error",
+          "message": {
+            "text": "[VULN-44] CWE-521 Weak password requirement - accepts empty/short"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/auth_api_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 49,
+                  "snippet": {
+                    "text": "return len(password) >= 0"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-44",
+            "cwe": "CWE-521"
+          }
+        },
+        {
+          "ruleId": "python/observable-timing-discrepancy",
+          "ruleIndex": 32,
+          "level": "error",
+          "message": {
+            "text": "[VULN-45] CWE-208 Non-constant-time comparison of secret"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/auth_api_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 54,
+                  "snippet": {
+                    "text": "return provided == expected"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-45",
+            "cwe": "CWE-208"
+          }
+        },
+        {
+          "ruleId": "python/improper-verification-of-cryptographic-signature",
+          "ruleIndex": 33,
+          "level": "error",
+          "message": {
+            "text": "[VULN-46] CWE-347 JWT signature not verified"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/auth_api_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 60,
+                  "snippet": {
+                    "text": "return jwt.decode(token, options={\"verify_signature\": False})"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-46",
+            "cwe": "CWE-347"
+          }
+        },
+        {
+          "ruleId": "python/use-of-hard-coded-credentials",
+          "ruleIndex": 18,
+          "level": "error",
+          "message": {
+            "text": "[VULN-47] CWE-798 Hard-coded / weak JWT signing secret"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/auth_api_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 66,
+                  "snippet": {
+                    "text": "return jwt.encode(payload, \"secret\", algorithm=\"HS256\")"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-47",
+            "cwe": "CWE-798"
+          }
+        },
+        {
+          "ruleId": "python/improper-restriction-of-excessive-authentication-attempts",
+          "ruleIndex": 34,
+          "level": "error",
+          "message": {
+            "text": "[VULN-48] CWE-307 Improper restriction of excessive auth attempts"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/auth_api_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 71,
+                  "snippet": {
+                    "text": "return db.execute(\"SELECT 1 FROM users WHERE name=? AND password=?\","
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-48",
+            "cwe": "CWE-307"
+          }
+        },
+        {
+          "ruleId": "python/information-exposure-through-error-message",
+          "ruleIndex": 35,
+          "level": "error",
+          "message": {
+            "text": "[VULN-49] CWE-209 Sensitive information exposure via stack trace"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/auth_api_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 81,
+                  "snippet": {
+                    "text": "return traceback.format_exc()"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-49",
+            "cwe": "CWE-209"
+          }
+        },
+        {
+          "ruleId": "python/xml-external-entity-xxe",
+          "ruleIndex": 36,
+          "level": "error",
+          "message": {
+            "text": "[VULN-50] CWE-611 XXE - external entities resolved on untrusted XML"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/data_config_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 20,
+                  "snippet": {
+                    "text": "return etree.fromstring(xml_bytes, parser)"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-50",
+            "cwe": "CWE-611"
+          }
+        },
+        {
+          "ruleId": "python/deserialization-of-untrusted-data",
+          "ruleIndex": 17,
+          "level": "error",
+          "message": {
+            "text": "[VULN-51] CWE-502 Unsafe YAML deserialization (yaml.load without SafeLoader)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/data_config_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 25,
+                  "snippet": {
+                    "text": "return yaml.load(data, Loader=yaml.Loader)"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-51",
+            "cwe": "CWE-502"
+          }
+        },
+        {
+          "ruleId": "python/unsafe-reflection",
+          "ruleIndex": 37,
+          "level": "error",
+          "message": {
+            "text": "[VULN-52] CWE-470 Unsafe reflection - importing module from untrusted name"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/data_config_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 31,
+                  "snippet": {
+                    "text": "return importlib.import_module(class_name)"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-52",
+            "cwe": "CWE-470"
+          }
+        },
+        {
+          "ruleId": "python/log-injection",
+          "ruleIndex": 38,
+          "level": "error",
+          "message": {
+            "text": "[VULN-53] CWE-117 Log injection - unsanitized input written to log"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/data_config_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 37,
+                  "snippet": {
+                    "text": "logger.info(\"Login attempt for user: \" + username)"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-53",
+            "cwe": "CWE-117"
+          }
+        },
+        {
+          "ruleId": "python/insertion-of-sensitive-information-into-log-file",
+          "ruleIndex": 39,
+          "level": "error",
+          "message": {
+            "text": "[VULN-54] CWE-532 Sensitive data (PAN/CVV) written to logs"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/data_config_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 42,
+                  "snippet": {
+                    "text": "logger.info(\"Processing card %s cvv %s\", card_number, cvv)"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-54",
+            "cwe": "CWE-532"
+          }
+        },
+        {
+          "ruleId": "python/improper-certificate-validation",
+          "ruleIndex": 40,
+          "level": "error",
+          "message": {
+            "text": "[VULN-55] CWE-295 TLS certificate validation disabled"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/data_config_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 50,
+                  "snippet": {
+                    "text": "ctx.verify_mode = ssl.CERT_NONE"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-55",
+            "cwe": "CWE-295"
+          }
+        },
+        {
+          "ruleId": "python/broken-risky-crypto-algorithm",
+          "ruleIndex": 20,
+          "level": "error",
+          "message": {
+            "text": "[VULN-56] CWE-327 Insecure/obsolete TLS protocol (SSLv23)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/data_config_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 56,
+                  "snippet": {
+                    "text": "return ssl.SSLContext(ssl.PROTOCOL_TLSv1)"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-56",
+            "cwe": "CWE-327"
+          }
+        },
+        {
+          "ruleId": "python/active-debug-code",
+          "ruleIndex": 41,
+          "level": "error",
+          "message": {
+            "text": "[VULN-57] CWE-489 Debug/development feature left active in production"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/data_config_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 61,
+                  "snippet": {
+                    "text": "app.run(host=\"0.0.0.0\", debug=True)"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-57",
+            "cwe": "CWE-489"
+          }
+        },
+        {
+          "ruleId": "python/cleartext-storage-of-sensitive-information",
+          "ruleIndex": 42,
+          "level": "error",
+          "message": {
+            "text": "[VULN-58] CWE-312 Cleartext storage of sensitive information"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/data_config_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 66,
+                  "snippet": {
+                    "text": "open(\"/etc/app/creds.txt\", \"w\").write(secret)"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-58",
+            "cwe": "CWE-312"
+          }
+        },
+        {
+          "ruleId": "python/improper-input-validation",
+          "ruleIndex": 43,
+          "level": "error",
+          "message": {
+            "text": "[VULN-59] CWE-20 Improper input validation - value used unchecked"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/data_config_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 72,
+                  "snippet": {
+                    "text": "return bytearray(int(size))"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-59",
+            "cwe": "CWE-20"
+          }
+        },
+        {
+          "ruleId": "python/unrestricted-file-upload",
+          "ruleIndex": 44,
+          "level": "error",
+          "message": {
+            "text": "[VULN-60] CWE-434 Unrestricted file upload - no type/extension check"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/vulnapp/data_config_vulns.py",
+                  "uriBaseId": "SRCROOT"
+                },
+                "region": {
+                  "startLine": 78,
+                  "snippet": {
+                    "text": "f.save(\"/var/www/uploads/\" + f.filename)"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": {
+            "vulnId": "VULN-60",
+            "cwe": "CWE-434"
+          }
+        }
+      ]
+    }
+  ]
+}
